@@ -5,6 +5,7 @@ Use Ruby on Rails -- duh.
 # Step 1: Establish Models, Migrations, and Associations (Start with User, Firearms, add Accessories later)
   Must have a has_many, a belongs_to, and a has_many :through
   User has_many Firearms, Firearm belongs_to User
+  Firearm has_and_belongs_to_many Accessories
     Following along with Sinatra App attributes:
       Users will have:
         Username
@@ -18,6 +19,20 @@ Use Ruby on Rails -- duh.
         Purchase Date
         Price
         User_id (belongs_to user)
+      Accessories will have:
+        Keeping it simple for now.
+        Category: "Optic" "Sling" "Light" "Laser" "Trigger" etc.
+        Price
+        Purchase Date
+        Serial Number
+        Name (Make/Model)
+  # To facilitate the has_and_belongs_to_many, we'll need a join table for firearms and accessories.
+        Firearms_Accessories will have:
+          firearm_id
+          accessory_id
+    
+    I believe I'll want to use a has_and_belongs_to_many relationship for firearms and accessories. That way, I can maintain unique database records for accessories (A user only needs to enter them once), but they can be associated to multiple firearms (the equivalent of saying "I have this same scope on 2 guns").
+    Iterating over user.accessories will give value.
 
 # Step 2: Validations for Model Attributes
   A user must have a username, email, and secure_password
