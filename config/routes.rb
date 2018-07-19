@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 resources :user
 resources :firearms # We will nest accessories under firearms.
 
+# get '/login', => 'sessions#login'
+# post '/login', => 'sessions#login'
+# get '/signup', => 'sessions#signup'
+
 
 root 'welcome#home'
 
