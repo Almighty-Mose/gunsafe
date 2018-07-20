@@ -2,6 +2,15 @@ Okay, here's what we're doing.
 
 Use Ruby on Rails -- duh.
 
+#FEATURE NOTES
+  Valuation: Model Class Methods for user, query and add value attributes for firearms and accessories.
+    User.firearms_value = total :price of all firearms
+    User.accessories_value = total :price of all accessories
+    User.collection_value (firearms_value + accessories_value)
+  Display this information, possibly on user's profile page?
+  Display firearms_value on firearms index
+  Display accessories_value on accessories index
+
 # Step 1: Establish Models, Migrations, and Associations (Start with User, Firearms, add Accessories later)
   Must have a has_many, a belongs_to, and a has_many :through
   User has_many Firearms, Firearm belongs_to User
