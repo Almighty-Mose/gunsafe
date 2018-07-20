@@ -1,11 +1,11 @@
 <h1>Log In!</h1>
 
-<%= form_tag do %>
-  <%= label_tag "Username:" %>
-  <%= text_field_tag(:username, nil, placeholder: "Enter your username") %>
+<%= form_for(:user, url: '/login') do |f| %>
+  <%= f.label "Username:" %>
+  <%= f.text_field(:username, placeholder: "Enter your username") %>
   <br>
-  <%= label_tag "Password:" %>
-  <%= password_field_tag(:password, nil, placeholder: "Enter your password") %>
+  <%= f.label "Password:" %>
+  <%= f.password_field(:password, placeholder: "Enter your password") %>
   <br>
-  <%= submit_tag "Log In" %>
+  <%= f.submit "Log In" %>
 <% end %>

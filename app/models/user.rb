@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_secure_password
   has_many :firearms
   has_many :accessories, through: :firearms
 
