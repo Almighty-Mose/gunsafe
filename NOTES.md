@@ -19,8 +19,8 @@ Use Ruby on Rails -- duh.
       Users will have:
         Username
         Email
-        Password (think about Devise)
       Firearms will have:
+        Password (think about Devise)
         Make (required)
         Model (required)
         Serial Number
