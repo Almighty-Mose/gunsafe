@@ -48,6 +48,12 @@ Use Ruby on Rails -- duh.
   A firearm must have at LEAST a make and model.
 
 # Step 3: Establish Controllers
+  What do I need a controller for?
+    Users
+    Firearms
+    Accessories
+    Sessions
+    Welcome
 
 # Step 4: Views
 
