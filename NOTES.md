@@ -11,7 +11,7 @@ Use Ruby on Rails -- duh.
   Display firearms_value on firearms index
   Display accessories_value on accessories index
 
-# Step 1: Establish Models, Migrations, and Associations (Start with User, Firearms, add Accessories later)
+# (DONE) Step 1: Establish Models, Migrations, and Associations (Start with User, Firearms, add Accessories later)
   Must have a has_many, a belongs_to, and a has_many :through
   User has_many Firearms, Firearm belongs_to User
   Firearm has_and_belongs_to_many Accessories
@@ -43,7 +43,7 @@ Use Ruby on Rails -- duh.
     I believe I'll want to use a has_and_belongs_to_many relationship for firearms and accessories. That way, I can maintain unique database records for accessories (A user only needs to enter them once), but they can be associated to multiple firearms (the equivalent of saying "I have this same scope on 2 guns").
     Iterating over user.accessories will give value.
 
-# Step 2: Validations for Model Attributes
+# (DONE) Step 2: Validations for Model Attributes
   A user must have a username, email, and secure_password
   A firearm must have at LEAST a make and model.
 
@@ -55,13 +55,33 @@ Use Ruby on Rails -- duh.
     Sessions
     Welcome
 
-# Step 4: Views
+# Step 4: Forms
+  Users New
+  Users Edit
+  Firearms with Accessories New
+  Firearms Edit
+  Accessories Edit
+  Sessions New
+
+# Step 4a: Views
   Users
-  
+    _form
+    new
+    edit
+    show
+    
   Firearms
+    _form
+    new
+    edit
+    show
+    index
 
   Accessories
-
+    new
+    edit
+    show
+    index
   
 
 # Step 5: Authentication
@@ -71,10 +91,8 @@ Use Ruby on Rails -- duh.
     Look into Devise. Watch the study group on this.
 
   # Must also provide Oauth.
-    Twitter?
-    I don't want to use Facebook because my users may not trust Facebook to keep their data secure.
+    Google
 
-# Step 6: Adding Accessories
 
 =====================================================================
 
@@ -95,3 +113,33 @@ Use Ruby on Rails -- duh.
   Try not to repeat code. Ask yourself, "If I'm repeating code, where else should I put this so I only write it once?"
 
 NO SCAFFOLDS.
+
+firearm form
+
+  make
+  model
+  price
+
+  Does this firearm have any accessories?
+    1, 2, 3, 4, etc.
+
+  user hits 3 accessories
+    firearm#create
+
+    redirect accessory#new
+
+  user_input.times do render form
+
+
+
+
+
+
+
+
+
+
+
+
+
+
