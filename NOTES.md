@@ -56,6 +56,13 @@ Use Ruby on Rails -- duh.
     Welcome
 
 # Step 4: Views
+  Users
+  
+  Firearms
+
+  Accessories
+
+  
 
 # Step 5: Authentication
   # Standard User Authentication
