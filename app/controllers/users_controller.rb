@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, except: [:new, :create]
 
   def new
     @user = User.new
@@ -30,4 +31,13 @@ class UsersController < ApplicationController
   def destroy
 
   end
+
+  private
+    def user_params
+      params.require(:user).permit(:username, :email, :password)
+    end
+
+    def set_user
+      @user = User.find(params[:id])
+    end
 end
