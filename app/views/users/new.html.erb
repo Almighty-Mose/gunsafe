@@ -1,3 +1,11 @@
 <h1>Join GunSafe!</h1>
 
-<%= render 'form' %>
+<div>
+  <%= form_for(@user) do |f| %>
+    <p><%= f.text_field(:username, placeholder: "Enter Your Username") %></p>
+    <p><%= f.text_field(:email, placeholder: "Enter Your Email") %></p>
+    <p><%= f.password_field(:password, placeholder: "Choose A Password") %></p>
+    <p><%= f.password_field(:password_confirmation, placeholder: "Confirm Password") %></p>
+    <p><%= f.submit "Submit Information" %>
+  <% end %>
+</div>

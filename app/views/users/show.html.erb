@@ -1,1 +1,9 @@
-Here will be an individual user's page.
+<h1><%= @user.username %>'s Profile</h1>
+
+<div>
+  <p>Email: <%= @user.email %></p>
+</div>
+
+<div>
+  <%= link_to 'Edit Profile Information', edit_user_path(@user) %>
+</div>
