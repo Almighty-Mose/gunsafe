@@ -1,4 +1,4 @@
-<h1><%= @current_user.username %>'s Firearms</h1>
+<h1><%= link_to "#{@current_user.username}", user_path(@current_user) %>'s Firearms</h1>
 
 <h3><%= link_to 'Add A Firearm!', new_firearm_path %></h3>
 
