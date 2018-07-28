@@ -1,0 +1,9 @@
+<%= form_for(@firearm) do |f| %>
+  <p><%= f.text_field(:make, placeholder: "Make") %></p>
+  <p><%= f.text_field(:model, placeholder: "Model") %></p>
+  <p><%= f.text_field(:caliber, placeholder: "Caliber") %></p>
+  <p><%= f.number_field(:price, placeholder: "Price") %></p>
+  <p><%= f.text_field(:serial_number, placeholder: "Serial Number") %></p>
+  <p><%= f.text_field(:purchase_date, placeholder: "Purchase Date MM/DD/YYYY") %></p>
+  <p><%= f.submit %>
+<% end %>

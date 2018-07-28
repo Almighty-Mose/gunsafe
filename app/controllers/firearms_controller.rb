@@ -1,5 +1,6 @@
 class FirearmsController < ApplicationController
   before_action :require_login
+  before_action :set_firearm, except: [:index, :new, :create]
 
   def index
     if @current_user.firearms.count == 0
@@ -8,7 +9,7 @@ class FirearmsController < ApplicationController
   end
 
   def new
-
+    @firearm = Firearm.new
   end
 
   def create
@@ -31,4 +32,9 @@ class FirearmsController < ApplicationController
 
   end
 
+  private
+
+    def set_firearm
+      @firearm = Firearm.find(params[:id])
+    end
 end

@@ -5,7 +5,7 @@ Specs:
 - [x] Include at least one has_many relationship (User has_many Firearms, Firearm has_many Accessories)
 - [x] Include at least one belongs_to relationship (Firearms belong_to a User, Accessories belong_to a Firearm)
 - [x] Include at least one has_many through relationship (User has_many Accessories through Firearms)
-- [x] The "through" part of the has_many through includes at least one user submittable attribute (Accessory )
+- [x] The "through" part of the has_many through includes at least one user submittable attribute (Accessory)
 - [x] Include reasonable validations for simple model objects (Users, Firearms, and Accessories must have names, username and email must be unique, Firearms and Accessories must have price.)
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 - [ ] Include signup (how e.g. Devise)

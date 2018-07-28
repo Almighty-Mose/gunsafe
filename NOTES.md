@@ -54,14 +54,12 @@ Use Ruby on Rails -- duh.
     Accessories
     Sessions
     Welcome
-# Firearms Controller
-  The firearms controller is completely dependent on a User.
-  Initially, we need a way to find that user's firearms and only use those.
 
 # Step 4: Forms
-  Users New
+  Users New 
   Users Edit
   Firearms with Accessories New
+    3 Accessory Fields, with a note saying if you have more than three, you can add the rest later.
   Firearms Edit
   Accessories Edit
   Sessions New
