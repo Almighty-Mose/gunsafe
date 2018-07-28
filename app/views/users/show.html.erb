@@ -5,5 +5,15 @@
 </div>
 
 <div>
+  I want a User's firearms collection total value to be here somewhere.
+</div>
+
+<h2><%= link_to 'View Your Firearms', firearms_path %></h2>
+
+<div>
   <%= button_to 'Edit Profile Information', edit_user_path(@user), method: :get %>
+</div>
+
+<div>
+  <%= link_to 'Log Out', logout_path, method: :post %>
 </div>
