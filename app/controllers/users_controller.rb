@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:new, :create]
+  before_action :require_login, except: [:new, :create]
 
   def new
     @user = User.new
@@ -25,7 +26,9 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.update(user_params)
 
+    redirect_to @user
   end
 
   def destroy
