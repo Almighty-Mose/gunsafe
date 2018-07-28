@@ -5,3 +5,5 @@
     <p>Email: <%= f.text_field :email %></p>
     <p><%= f.submit "Update Information" %></p>
   <% end %>
+
+  <%= button_to 'Delete Profile', user_path(@user), method: :delete, data: { confirm: 'Are you sure?'} %>
