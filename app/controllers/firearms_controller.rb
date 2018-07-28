@@ -13,7 +13,12 @@ class FirearmsController < ApplicationController
   end
 
   def create
-
+    @firearm = current_user.firearms.build(firearm_params)
+    if @firearm.save
+      redirect_to firearms_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -25,14 +30,22 @@ class FirearmsController < ApplicationController
   end
 
   def update
+    @firearm.update(firearm_params)
 
+    redirect_to @firearm
   end
 
   def destroy
+    @firearm.delete
 
+    redirect_to firearms_path
   end
 
   private
+
+    def firearm_params
+      params.require(:firearm).permit(:make, :model, :caliber, :serial_number, :price, :purchase_date)
+    end
 
     def set_firearm
       @firearm = Firearm.find(params[:id])
