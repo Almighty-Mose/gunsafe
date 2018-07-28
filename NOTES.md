@@ -54,6 +54,9 @@ Use Ruby on Rails -- duh.
     Accessories
     Sessions
     Welcome
+# Firearms Controller
+  The firearms controller is completely dependent on a User.
+  Initially, we need a way to find that user's firearms and only use those.
 
 # Step 4: Forms
   Users New

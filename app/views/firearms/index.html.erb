@@ -1,1 +1,7 @@
-Holy Shit! All your Firearms!
+<h1><%= @current_user.username %>'s Firearms</h1>
+
+<ul>
+  <% @current_user.firearms.each do |firearm| %>
+    <li><%= link_to "#{firearm.make} #{firearm.model}", firearm_path(firearm) %></li>
+  <% end %>
+</ul>
