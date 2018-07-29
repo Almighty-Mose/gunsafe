@@ -5,6 +5,14 @@
 <p>Price Paid: $<%= @firearm.price %></p>
 <p>Date Purchased: <%= @firearm.purchase_date %></p>
 
+<h2>Accessories</h2>
+
+<ul>
+  <% @firearm.accessories.each do |acc| %>
+    <li><%= link_to "#{acc.name}", firearm_accessory_path(acc) %></li>
+  <% end %>
+</ul>
+
 <%= button_to 'Edit Firearm', edit_firearm_path(@firearm), method: :get %>
 <br>
 <%= button_to 'Delete Firearm', firearm_path(@firearm), method: :delete, data: { confirm: 'Are you sure?'} %>

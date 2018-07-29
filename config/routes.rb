@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :users
-  resources :firearms 
+  resources :firearms do
+    resources :accessories
+  end
+
+  resources :accessories
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

@@ -44,7 +44,7 @@ class FirearmsController < ApplicationController
   private
 
     def firearm_params
-      params.require(:firearm).permit(:make, :model, :caliber, :serial_number, :price, :purchase_date)
+      params.require(:firearm).permit(:make, :model, :caliber, :serial_number, :price, :purchase_date, accessory_ids:[])
     end
 
     def set_firearm
