@@ -1,4 +1,5 @@
 class AccessoriesController < ApplicationController
+  before_action :set_accessory, except: [:new, :create, :index]
 
   def index
 
@@ -26,5 +27,11 @@ class AccessoriesController < ApplicationController
 
   def destroy
 
+  end
+
+  private
+
+  def set_accessory
+    @accessory = Accessory.find(params[:id])
   end
 end
