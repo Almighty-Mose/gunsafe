@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_20_161426) do
+ActiveRecord::Schema.define(version: 2018_07_30_214957) do
 
   create_table "accessories", force: :cascade do |t|
     t.string "name"
     t.integer "price"
     t.string "purchase_date"
-    t.string "serial_number"
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

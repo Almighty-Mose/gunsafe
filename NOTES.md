@@ -43,6 +43,9 @@ Use Ruby on Rails -- duh.
     I believe I'll want to use a has_and_belongs_to_many relationship for firearms and accessories. That way, I can maintain unique database records for accessories (A user only needs to enter them once), but they can be associated to multiple firearms (the equivalent of saying "I have this same scope on 2 guns").
     Iterating over user.accessories will give value.
 
+    Accessories don't need a serial number attribute. We don't need to concern ourselves with uniqueness in that way.
+    
+
 # (DONE) Step 2: Validations for Model Attributes
   A user must have a username, email, and secure_password
   A firearm must have at LEAST a make and model.
