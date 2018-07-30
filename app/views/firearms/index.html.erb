@@ -1,5 +1,7 @@
 <h1><%= link_to "#{@current_user.username}", user_path(@current_user) %>'s Firearms</h1>
 
+<h2>Current Worth: $<%= @current_user.firearms_value %></h2>
+
 <h3><%= link_to 'Add A Firearm!', new_firearm_path %></h3>
 
 <ul>

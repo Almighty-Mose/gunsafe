@@ -142,6 +142,7 @@ Accessories_firearms
 Make an accessory_firearms model so that it can have attributes
 Update my database
 Change accessories and firearms to has_many_through.
+Always reference the accessory_id and the firearm_id when accessing the join table.
 
 
 
