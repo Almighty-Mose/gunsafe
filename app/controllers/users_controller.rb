@@ -44,5 +44,8 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
+      if @user != current_user
+        redirect_to current_user
+      end
     end
 end

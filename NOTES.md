@@ -39,6 +39,7 @@ Use Ruby on Rails -- duh.
         Firearms_Accessories will have:
           firearm_id
           accessory_id
+          Connected attribute (true, false)
     
     I believe I'll want to use a has_and_belongs_to_many relationship for firearms and accessories. That way, I can maintain unique database records for accessories (A user only needs to enter them once), but they can be associated to multiple firearms (the equivalent of saying "I have this same scope on 2 guns").
     Iterating over user.accessories will give value.
@@ -135,7 +136,12 @@ firearm form
   user_input.times do render form
 
 
+Accessories_firearms
 
+  Connected boolean (is an accessory attached to this firearm?)
+Make an accessory_firearms model so that it can have attributes
+Update my database
+Change accessories and firearms to has_many_through.
 
 
 

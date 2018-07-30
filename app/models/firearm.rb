@@ -1,6 +1,7 @@
 class Firearm < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :accessories
+  #need to change this to has_many_through accessories
 
   validates :make, presence: true
   validates :model, presence: true

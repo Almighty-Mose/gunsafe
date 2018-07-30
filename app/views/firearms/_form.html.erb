@@ -6,6 +6,7 @@
   <p><%= f.text_field(:serial_number, placeholder: "Serial Number") %></p>
   <p><%= f.text_field(:purchase_date, placeholder: "Purchase Date MM/DD/YYYY") %></p>
   <h3>Add Accessories or Select From Existing Accessories</h3>
+    <!-- fields for, use some variable other than "f"-->
   <p><%= f.collection_check_boxes :accessory_ids, Accessory.all, :id, :name %></p>
 
   <p><%= f.submit %>

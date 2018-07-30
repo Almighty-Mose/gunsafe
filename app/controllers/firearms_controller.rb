@@ -49,5 +49,8 @@ class FirearmsController < ApplicationController
 
     def set_firearm
       @firearm = Firearm.find(params[:id])
+      if @firearm.user != current_user
+        redirect_to firearms_path
+      end 
     end
 end

@@ -9,10 +9,12 @@
 
 <ul>
   <% @firearm.accessories.each do |acc| %>
-    <li><%= link_to "#{acc.name}", firearm_accessory_path(acc) %></li>
+    <li><%= link_to "#{acc.name}", firearm_accessory_path(@firearm, acc) %></li>
   <% end %>
 </ul>
 
+<%= button_to 'Add an Accessory', new_firearm_accessory_path(@firearm), method: :get %>
+<br>
 <%= button_to 'Edit Firearm', edit_firearm_path(@firearm), method: :get %>
 <br>
 <%= button_to 'Delete Firearm', firearm_path(@firearm), method: :delete, data: { confirm: 'Are you sure?'} %>
