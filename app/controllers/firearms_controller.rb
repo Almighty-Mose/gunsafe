@@ -4,7 +4,6 @@ class FirearmsController < ApplicationController
   before_action :set_firearm, except: [:index, :new, :create]
 
   def index
-    # @firearms = @current_user.firearms
     if @current_user.firearms.count == 0
       redirect_to new_firearm_path
     end
