@@ -144,6 +144,9 @@ Update my database
 Change accessories and firearms to has_many_through.
 Always reference the accessory_id and the firearm_id when accessing the join table.
 
+I would like to add Model Class methods to sort a User's Firearms by type: e.g Rifle, Shotgun, Pistol, Other.
+  To do this I need to add a "type" Column to the firearm's table.
+
 
 
 

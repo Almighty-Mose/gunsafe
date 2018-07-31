@@ -4,8 +4,16 @@
 
 <h3><%= link_to 'Add A Firearm!', new_firearm_path %></h3>
 
+<div>
+  <h4>Filter Firearms:</h4>
+  <%= form_tag("/firearms", method: "get") do %>
+    <%= select_tag :category, options_for_select(@current_user.firearms.pluck(:category).uniq), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+
 <ul>
-  <% @current_user.firearms.each do |firearm| %>
+  <% @firearms.each do |firearm| %>
     <li><%= link_to "#{firearm.make} #{firearm.model}", firearm_path(firearm) %></li>
   <% end %>
 </ul>

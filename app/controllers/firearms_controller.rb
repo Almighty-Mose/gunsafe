@@ -1,10 +1,18 @@
+require 'pry'
 class FirearmsController < ApplicationController
   before_action :require_login
   before_action :set_firearm, except: [:index, :new, :create]
 
   def index
+    # @firearms = @current_user.firearms
     if @current_user.firearms.count == 0
       redirect_to new_firearm_path
+    end
+    
+    if !params[:category].blank?
+      @firearms = @current_user.firearms.category(params[:category])
+    else
+      @firearms = @current_user.firearms
     end
   end
 
@@ -44,7 +52,7 @@ class FirearmsController < ApplicationController
   private
 
     def firearm_params
-      params.require(:firearm).permit(:make, :model, :caliber, :serial_number, :price, :purchase_date, accessory_ids:[])
+      params.require(:firearm).permit(:make, :model, :caliber, :category, :serial_number, :price, :purchase_date, accessory_ids:[])
     end
 
     def set_firearm
