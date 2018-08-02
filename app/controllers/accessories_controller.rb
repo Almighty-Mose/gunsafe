@@ -1,3 +1,4 @@
+require 'pry'
 class AccessoriesController < ApplicationController
   before_action :set_accessory, except: [:new, :create, :index]
 
@@ -6,15 +7,17 @@ class AccessoriesController < ApplicationController
   end
 
   def new
+    @firearm = Firearm.find(params[:firearm_id])
     @accessory = Accessory.new
   end
 
   def create
-    @accessory = current_user.accessories.build(accessory_params)
+    @firearm = Firearm.find(params[:accessory][:firearm_id])
+    @accessory = @firearm.accessories.create(accessory_params)
     if @accessory.save
-      redirect_to firearms_path
+      redirect_to firearm_path(@firearm)
     else
-      render :new
+      redirect_to new_firearm_accessory_path(@firearm)
     end
   end
 

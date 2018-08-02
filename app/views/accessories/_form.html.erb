@@ -1,0 +1,8 @@
+<%= form_for(@accessory) do |a| %>
+  <p><%= a.hidden_field :firearm_id, value: params[:firearm_id] %></p>
+  <p><%= a.text_field(:name, placeholder: "Name") %></p>
+  <p><%= a.number_field(:price, placeholder: "Price") %></p>
+  <p><%= a.text_field(:purchase_date, placeholder: "Date Purchased - MM/DD/YYYY") %></p>
+  <p><%= a.select :category, ['Optic', 'Sling', 'Light', 'Trigger', 'Other'] %></p>
+  <p><%= a.submit %></p>
+<% end %>

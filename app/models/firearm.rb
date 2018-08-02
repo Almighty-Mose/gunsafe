@@ -7,4 +7,8 @@ class Firearm < ApplicationRecord
   validates :make, presence: true
   validates :model, presence: true
   validates :price, presence: true
+
+  def name
+    self.make + ' ' + self.model
+  end
 end
