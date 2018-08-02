@@ -1,1 +1,10 @@
-<%= @accessory.name %>
+<h1><%= @accessory.name %></h1>
+
+<p>Purchased On: <%= @accessory.purchase_date %></p>
+<p>Price: $<%= @accessory.price %></p>
+
+<%= button_to 'Edit Accessory', edit_accessory_path(@accessory), method: :get %>
+<br>
+<%= button_to 'Delete Accessory', accessory_path(@accessory), method: :delete, data: { confirm: 'Are you sure?'} %>
+<br>
+<%= button_to 'Return to Index', firearms_path, method: :get %>
