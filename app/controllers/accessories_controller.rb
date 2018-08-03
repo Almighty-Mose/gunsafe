@@ -16,14 +16,13 @@ class AccessoriesController < ApplicationController
   end
 
   def create
-    # raise params.inspect
     @firearm = Firearm.find(params[:accessory][:firearm_id])
     @accessory = @firearm.accessories.create(accessory_params)
     if @accessory.save
       redirect_to firearm_path(@firearm)
     else
-      #Ask Jenn about this!!
-      redirect_to new_firearm_accessory_path(@firearm)
+      params[:firearm_id] = @firearm.id
+      render :new
     end
   end
 
