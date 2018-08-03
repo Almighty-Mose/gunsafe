@@ -1,4 +1,9 @@
 <%= form_for(@firearm) do |f| %>
+  <% if @firearm.errors.any? %>
+    <% @firearm.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
   <p><%= f.text_field(:make, placeholder: "Make") %></p>
   <p><%= f.text_field(:model, placeholder: "Model") %></p>
   <p><%= f.select :category, ['Pistol', 'Rifle', 'Shotgun', 'NFA', 'Other'] %></p>

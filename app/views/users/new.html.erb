@@ -2,6 +2,11 @@
 
 <div>
   <%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% end %>
     <p><%= f.text_field(:username, placeholder: "Enter Your Username") %></p>
     <p><%= f.text_field(:email, placeholder: "Enter Your Email") %></p>
     <p><%= f.password_field(:password, placeholder: "Choose A Password") %></p>
