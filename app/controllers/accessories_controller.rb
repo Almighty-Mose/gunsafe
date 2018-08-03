@@ -3,7 +3,7 @@ class AccessoriesController < ApplicationController
   before_action :set_accessory, except: [:new, :create, :index]
 
   def index
-
+    @accessories = current_user.accessories
   end
 
   def new
@@ -17,6 +17,7 @@ class AccessoriesController < ApplicationController
     if @accessory.save
       redirect_to firearm_path(@firearm)
     else
+      #Ask Jenn about this!!
       redirect_to new_firearm_accessory_path(@firearm)
     end
   end

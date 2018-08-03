@@ -1,0 +1,9 @@
+<h1>Your Accessories</h1>
+
+<ul>
+  <% @accessories.each do |acc| %>
+    <li>
+      <%= link_to "#{acc.name}", accessory_path(acc) %>
+    </li>
+  <% end %>
+</ul>
