@@ -1,3 +1,15 @@
 <h1>Add A New Firearm</h1>
 
-<%= render 'form' %>
+<%= form_for(@firearm) do |f| %>
+  <%= render 'form', f: f %>
+    <fieldset>
+      <legend>New Accessory</legend>
+      <%= f.fields_for :accessories do |a| %>
+      <p><%= a.text_field(:name, placeholder: "Accessory Name") %></p>
+      <p><%= a.number_field(:price, placeholder: "Accessory Price") %></p>
+      <p><%= a.text_field(:purchase_date, placeholder: "Date Purchased - MM/DD/YYYY") %></p>
+      <p><%= a.select :category, ['Optic', 'Sling', 'Light', 'Trigger', 'Other'] %></p>
+      <% end %>
+    </fieldset>
+  <p><%= f.submit %></p>
+<% end %>

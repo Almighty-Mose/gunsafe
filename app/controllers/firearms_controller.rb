@@ -17,9 +17,11 @@ class FirearmsController < ApplicationController
 
   def new
     @firearm = Firearm.new
+    @firearm.accessories.build
   end
 
   def create
+    # raise params.inspect
     @firearm = current_user.firearms.build(firearm_params)
     if @firearm.save
       redirect_to firearms_path
@@ -51,7 +53,22 @@ class FirearmsController < ApplicationController
   private
 
     def firearm_params
-      params.require(:firearm).permit(:make, :model, :caliber, :category, :serial_number, :price, :purchase_date, accessory_ids:[])
+      params.require(:firearm).permit(
+        :make, 
+        :model, 
+        :caliber, 
+        :category, 
+        :serial_number, 
+        :price, 
+        :purchase_date, 
+        accessory_ids: [],
+        accessories_attributes: [
+          :name,
+          :price,
+          :puchase_date,
+          :category
+          ]
+        )
     end
 
     def set_firearm
