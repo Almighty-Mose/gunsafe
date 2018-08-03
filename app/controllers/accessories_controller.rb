@@ -3,7 +3,11 @@ class AccessoriesController < ApplicationController
   before_action :set_accessory, except: [:new, :create, :index]
 
   def index
-    @accessories = current_user.accessories
+    if !params[:category].blank?
+      @accessories = current_user.accessories.category(params[:category])
+    else
+      @accessories = current_user.accessories
+    end
   end
 
   def new
