@@ -43,7 +43,7 @@ class FirearmsController < ApplicationController
   end
 
   def destroy
-    @firearm.delete
+    @firearm.destroy
 
     redirect_to firearms_path
   end

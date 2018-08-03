@@ -16,6 +16,7 @@ class AccessoriesController < ApplicationController
   end
 
   def create
+    # raise params.inspect
     @firearm = Firearm.find(params[:accessory][:firearm_id])
     @accessory = @firearm.accessories.create(accessory_params)
     if @accessory.save
@@ -41,7 +42,7 @@ class AccessoriesController < ApplicationController
   end
 
   def destroy
-    @accessory.delete
+    @accessory.destroy
 
     redirect_to firearms_path
   end
