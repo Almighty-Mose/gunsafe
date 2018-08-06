@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
+  get 'auth/:provider/callback' => 'sessions#create_google'
+  get 'auth/failure' => redirect('/')
 end

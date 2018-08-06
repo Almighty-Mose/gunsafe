@@ -4,6 +4,12 @@ class SessionsController < ApplicationController
     @user = User.new
   end
 
+  def create_google
+    user = User.from_omniauth(request.env["omniauth.auth"])
+    session[:user_id] = user.id
+    redirect_to firearms_path
+  end
+
   def create
     @user = User.find_by(username: params[:user][:username])
     if @user && @user.authenticate(params[:user][:password])
