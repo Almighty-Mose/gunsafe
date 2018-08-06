@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_secure_password :validations => false
+  has_secure_password
   has_many :firearms
   has_many :accessories, through: :firearms
 
@@ -17,6 +17,7 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.uid = auth.uid
       user.username = auth.info.name
+      user.password = Sysrandom.base64(32)
       user.email = auth.info.email
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)

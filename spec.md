@@ -11,7 +11,7 @@ Specs:
 - [x] Include signup (Built sessions controller)
 - [x] Include login (Built sessions controller)
 - [x] Include logout (Built sessions controller)
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
+- [x] Include third party signup/login (Google OmniAuth)
 - [x] Include nested resource show or index (firearms/2/accessories/1)
 - [x] Include nested resource "new" form (firearms/1/accessories/new)
 - [X] Include form display of validation errors (forms include fields_with_errors display)

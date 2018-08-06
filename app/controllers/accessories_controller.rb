@@ -35,8 +35,11 @@ class AccessoriesController < ApplicationController
 
   def update
     @accessory.update(accessory_params)
-
-    redirect_to @accessory
+    if @accessory.save
+      redirect_to @accessory
+    else
+      render :edit
+    end
   end
 
   def destroy

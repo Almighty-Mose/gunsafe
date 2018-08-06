@@ -1,3 +1,9 @@
+  <% if @accessory.errors.any? %>
+    <% @accessory.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+
 <%= form_for(@accessory) do |a| %>
   <p><%= a.hidden_field :firearm_id, value: params[:firearm_id] %></p>
   <p><%= a.text_field(:name, placeholder: "Name") %></p>

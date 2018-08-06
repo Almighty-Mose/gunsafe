@@ -38,8 +38,11 @@ class FirearmsController < ApplicationController
 
   def update
     @firearm.update(firearm_params)
-
-    redirect_to @firearm
+    if @firearm.save
+      redirect_to @firearm
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -63,7 +66,7 @@ class FirearmsController < ApplicationController
         accessories_attributes: [
           :name,
           :price,
-          :puchase_date,
+          :purchase_date,
           :category
           ]
         )
