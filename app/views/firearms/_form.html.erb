@@ -12,9 +12,5 @@
   <p><%= f.text_field(:purchase_date, placeholder: "Purchase Date MM/DD/YYYY") %></p>
   <h3>Add an Accessory or Select From Existing Accessories</h3>
   <p>More accessories can be added from this firearm's page!</p>
-  <!-- if object persisted, don't render this part
-  accessory yada yada -->
-    <!-- fields for, use some variable other than "f"-->
-    <!-- What's the best way to initialize this? I don't want it on the edit page -->
   <p><%= f.collection_check_boxes :accessory_ids, Accessory.all, :id, :name %></p>
 

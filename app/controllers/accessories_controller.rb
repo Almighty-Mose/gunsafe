@@ -1,4 +1,3 @@
-require 'pry'
 class AccessoriesController < ApplicationController
   before_action :set_accessory, except: [:new, :create, :index]
 

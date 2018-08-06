@@ -1,4 +1,3 @@
-require 'pry'
 class FirearmsController < ApplicationController
   before_action :require_login
   before_action :set_firearm, except: [:index, :new, :create]
@@ -21,7 +20,6 @@ class FirearmsController < ApplicationController
   end
 
   def create
-    # raise params.inspect
     @firearm = current_user.firearms.build(firearm_params)
     if @firearm.save
       redirect_to firearms_path
