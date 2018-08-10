@@ -3,14 +3,15 @@
       <li><%= message %></li>
     <% end %>
   <% end %>
-  <p><%= f.text_field(:make, placeholder: "Make") %></p>
-  <p><%= f.text_field(:model, placeholder: "Model") %></p>
-  <p><%= f.select :category, ['Pistol', 'Rifle', 'Shotgun', 'NFA', 'Other'] %></p>
-  <p><%= f.text_field(:caliber, placeholder: "Caliber") %></p>
-  <p><%= f.number_field(:price, placeholder: "Price") %></p>
-  <p><%= f.text_field(:serial_number, placeholder: "Serial Number") %></p>
-  <p><%= f.text_field(:purchase_date, placeholder: "Purchase Date MM/DD/YYYY") %></p>
+  
+  <%= f.text_field(:make, placeholder: "Make") %>
+  <%= f.text_field(:model, placeholder: "Model") %>
+  <%= f.select :category, ['Pistol', 'Rifle', 'Shotgun', 'NFA', 'Other'] %>
+  <%= f.text_field(:caliber, placeholder: "Caliber") %>
+  <%= f.number_field(:price, placeholder: "Price") %>
+  <%= f.text_field(:serial_number, placeholder: "Serial Number") %>
+  <%= f.text_field(:purchase_date, placeholder: "Purchase Date MM/DD/YYYY") %>
   <h3>Add an Accessory or Select From Existing Accessories</h3>
   <p>More accessories can be added from this firearm's page!</p>
-  <p><%= f.collection_check_boxes :accessory_ids, Accessory.all, :id, :name %></p>
+  <%= f.collection_check_boxes :accessory_ids, Accessory.all, :id, :name %>
 

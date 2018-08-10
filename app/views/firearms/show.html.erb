@@ -1,5 +1,7 @@
 <h1><%= @firearm.name %></h1>
 
+<hr>
+
 <p>Caliber: <%= @firearm.caliber %></p>
 <p>Serial Number: <%= @firearm.serial_number %></p>
 <p>Price Paid: $<%= @firearm.price %></p>
@@ -14,9 +16,6 @@
 </ul>
 
 <%= button_to 'Add an Accessory', new_firearm_accessory_path(@firearm), method: :get %>
-<br>
 <%= button_to 'Edit Firearm', edit_firearm_path(@firearm), method: :get %>
-<br>
 <%= button_to 'Delete Firearm', firearm_path(@firearm), method: :delete, data: { confirm: 'Are you sure?'} %>
-<br>
-<%= button_to 'Return to Index', firearms_path, method: :get %>
+<%= button_to 'Return to Index', firearms_path, method: :get, class: "outline" %>

@@ -1,7 +1,7 @@
 <h1>Your Accessories</h1>
-
+<hr>
 <div>
-  <h4>Filter Accessories:</h4>
+  Filter Accessories:
   <%= form_tag("/accessories", method: "get") do %>
     <%= select_tag :category, options_for_select(@current_user.accessories.pluck(:category).uniq), include_blank: true %>
     <%= submit_tag "Filter" %>

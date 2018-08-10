@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+body {
+  background-color: rgb(243, 243, 243);
+}
+
+select#category {
+  width: 100px;
+}
+
+.button_to {
+  display: inline;
+}
+
+hr {
+  height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+a:link {
+  text-decoration: none;
+}
