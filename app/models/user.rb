@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :email, uniqueness: true
 
-  def firearms_value
+  def firearms_value #move this to the Firearms model as a class method
     self.firearms.sum("price")
   end
 

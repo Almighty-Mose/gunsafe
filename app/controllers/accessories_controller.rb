@@ -1,4 +1,5 @@
 class AccessoriesController < ApplicationController
+  before_action :require_login
   before_action :set_accessory, except: [:new, :create, :index]
 
   def index
