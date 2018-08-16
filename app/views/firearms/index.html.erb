@@ -2,7 +2,7 @@
 <hr>
 <h4>Current Worth: $<%= @current_user.firearms_value %></h4>
 
-Filter Firearms:
+<p>Filter Firearms:</p>
 <%= form_tag("/firearms", method: "get") do %>
   <%= select_tag :category, options_for_select(@current_user.firearms.pluck(:category).uniq), include_blank: true %>
   <%= submit_tag "Filter" %>
@@ -10,8 +10,10 @@ Filter Firearms:
 
 <%= button_to 'Add A Firearm!', new_firearm_path, method: :get, class: "outline" %>
 
-<ul>
-  <% @firearms.each do |firearm| %>
-    <li><%= link_to "#{firearm.make} #{firearm.model}", firearm_path(firearm) %></li>
-  <% end %>
-</ul>
+<div>
+  <ul class="no-bullet">
+    <% @firearms.each do |firearm| %>
+      <li><%= link_to "#{firearm.make} #{firearm.model}", firearm_path(firearm) %></li>
+    <% end %>
+  </ul>
+</div>

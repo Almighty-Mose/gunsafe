@@ -9,7 +9,7 @@
 
 <h2>Accessories</h2>
 
-<ul>
+<ul class="no-bullet">
   <% @firearm.accessories.each do |acc| %>
     <li><%= link_to "#{acc.name}", firearm_accessory_path(@firearm, acc) %></li>
   <% end %>
