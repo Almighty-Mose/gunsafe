@@ -25,4 +25,4 @@ Accessories can be accessed from this page by clicking "View Your Accessories".
 File an issue with a pull request through github.
 
 ## Code of Conduct
-Everyone interacting in the IHaveThat project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://www.contributor-covenant.org/version/1/4/code-of-conduct).
+Everyone interacting in the GunSafe project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://www.contributor-covenant.org/version/1/4/code-of-conduct).
