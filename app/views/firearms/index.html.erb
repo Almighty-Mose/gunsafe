@@ -10,10 +10,34 @@
 
 <%= button_to 'Add A Firearm!', new_firearm_path, method: :get, class: "outline" %>
 
+<div id="firearmList">
+  <button class="accordion">Rifles!</button>
+  <div class="panel">
+    <ul>
+      <li>Here's</li>
+      <li>Where</li>
+      <li>Your</li>
+      <li>Shit</li>
+      <li>Will</li>
+      <li>Be</li>
+    </ul>
+  </div>
+  <button class="accordion">Pistols!</button>
+  <div class="panel"></div>
+  
+  <button class="accordion">Shotguns!</button>
+  <div class="panel"></div>
+</div>
+
 <div>
   <ul class="no-bullet">
     <% @firearms.each do |firearm| %>
-      <li><%= link_to "#{firearm.make} #{firearm.model}", firearm_path(firearm) %></li>
+      <li><%= link_to "#{firearm.make} #{firearm.model}", firearm_path(firearm), :class => 'openSideNav' %></li>
     <% end %>
   </ul>
+</div>
+
+<div id="sideNav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <p>HERE'S YOUR SHIT</p>
 </div>
