@@ -10,8 +10,7 @@ $(function() {
   $('.openSideNav').click(function(event) {
     event.preventDefault();
     var id = $(this).data("id");
-    $.get("/firearms/" + id + "/info", function(data) {
-      debugger;
+    $.get("/firearms/" + id + ".json", function(data) {
       alert(data);
     });
     document.getElementById("sideNav").style.width = "500px";
