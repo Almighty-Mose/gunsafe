@@ -2,39 +2,33 @@
 <hr>
 <h4>Current Worth: $<%= @current_user.firearms_value %></h4>
 
-<p>Filter Firearms:</p>
-<%= form_tag("/firearms", method: "get") do %>
-  <%= select_tag :category, options_for_select(@current_user.firearms.pluck(:category).uniq), include_blank: true %>
-  <%= submit_tag "Filter" %>
-<% end %>
-
 <%= button_to 'Add A Firearm!', new_firearm_path, method: :get, class: "outline" %>
 
 <div id="firearmList">
-  <button class="accordion">Rifles!</button>
+  <button class="accordion">Rifles</button>
   <div class="panel">
     <ul>
-      <li>Here's</li>
-      <li>Where</li>
-      <li>Your</li>
-      <li>Shit</li>
-      <li>Will</li>
-      <li>Be</li>
+      <% @rifles.each do |rifle| %>
+        <li><a href="javascript:void(0)" data-id="<%= rifle.id %>" class="openSideNav"><%= rifle.name %></a></li>
+      <% end %>
     </ul>
   </div>
-  <button class="accordion">Pistols!</button>
-  <div class="panel"></div>
-  
-  <button class="accordion">Shotguns!</button>
-  <div class="panel"></div>
-</div>
-
-<div>
-  <ul class="no-bullet">
-    <% @firearms.each do |firearm| %>
-      <li><%= link_to "#{firearm.make} #{firearm.model}", firearm_path(firearm), :class => 'openSideNav' %></li>
-    <% end %>
-  </ul>
+  <button class="accordion">Pistols</button>
+  <div class="panel">
+    <ul>
+      <% @pistols.each do |pistol| %>
+        <li><a href="javascript:void(0)" data-id="<%= pistol.id %>" class="openSideNav"><%= pistol.name %></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <button class="accordion">Shotguns</button>
+  <div class="panel">
+    <ul>
+      <% @shotguns.each do |shotgun| %>
+        <li><a href="javascript:void(0)" data-id="<%= shotgun.id %>" class="openSideNav"><%= shotgun.name %></a></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
 <div id="sideNav" class="sidenav">

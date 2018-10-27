@@ -7,11 +7,15 @@ class FirearmsController < ApplicationController
       redirect_to new_firearm_path
     end
     
-    if !params[:category].blank?
-      @firearms = @current_user.firearms.category(params[:category])
-    else
-      @firearms = @current_user.firearms
-    end
+    # if !params[:category].blank?
+    #   @firearms = @current_user.firearms.category(params[:category])
+    # else
+    #   @firearms = @current_user.firearms
+    # end
+
+    @rifles = @current_user.firearms.category("Rifle")
+    @pistols = @current_user.firearms.category("Pistol")
+    @shotguns = @current_user.firearms.category("Shotgun")
   end
 
   def new
@@ -49,6 +53,11 @@ class FirearmsController < ApplicationController
     @firearm.destroy
 
     redirect_to firearms_path
+  end
+
+  def info
+    firearm = Firearm.find(params[:id])
+    render json: firearm.to_json
   end
 
   private

@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   get 'auth/:provider/callback' => 'sessions#create_google'
   get 'auth/failure' => redirect('/')
+  get 'firearms/:id/info' => 'firearms#info'
 end
