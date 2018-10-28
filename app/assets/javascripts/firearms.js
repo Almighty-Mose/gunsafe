@@ -3,6 +3,7 @@ function closeNav() {
 }
 
 function Firearm(data) {
+  this.name = `${data["make"]} ${data["model"]}`;
   this.caliber = data["caliber"];
   this.price = data["price"];
   this.serial = data["serial_number"];
@@ -18,6 +19,7 @@ $(function() {
       var firearm = new Firearm(data);
       //this will insert the data response into the sideNav element of firearms/index.html
       //need a prototype method for the Firearm object to format the name
+      $(".firearmName").text(firearm.name);
       $(".firearmCaliber").text(firearm.caliber);
       $(".firearmSerial").text(firearm.serial);
       $(".firearmPrice").text(firearm.price);
