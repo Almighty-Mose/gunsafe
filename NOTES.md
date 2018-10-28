@@ -154,6 +154,7 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
 
 # MUST RENDER AN INDEX PAGE (LIST OF THINGS)
   Firearms Index will render the list of a user's firearms
+  Refactor using AJAX
   Fetch firearms with AJAX
   Render the firearms as JSON in controller
   Append those firearms to page
@@ -180,13 +181,13 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
   # Top of page navbar
     Contains links to profile and logout
   # Firearms auto-added into categories which display on index page
-    Categories like Rifle, Pistol, Shotgun
+    + Categories like Rifle, Pistol, Shotgun
     Arrow on left pointing to category which turns down upon click
   # Clicking a category exposes a dropdown or drawer which contains all firearms of that category
-    Basically just exposes the list of firearms of that type
-    Animated drawer slides open
+    + Basically just exposes the list of firearms of that type
+      Animated drawer slides open
   # Sidebar drawer for firearms
-    When you click a firearm, a sidebar (with opacity?) slides over and contains detailed firearm information
+    + When you click a firearm, a sidebar (with opacity?) slides over and   contains detailed firearm information
     Firearms can have an image of that firearm displayed in sidebar
   # Accessory info/add in firearm sidebar
     Accessories are included
