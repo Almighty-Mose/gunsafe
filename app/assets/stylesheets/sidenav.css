@@ -22,7 +22,7 @@
   transition: 0.3s;
 }
 
-/*When you mouse over the navigation links, change their color */
+/* Color for sideNav data*/
 .sidenav p, h2 {
   color: #f1f1f1;
 }

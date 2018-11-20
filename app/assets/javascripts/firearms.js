@@ -2,6 +2,7 @@ function closeNav() {
   document.getElementById("sideNav").style.width = "0px";
 }
 
+// Firearm constructor creates firearm objects for later consumption by jQuery
 function Firearm(data) {
   this.name = `${data["make"]} ${data["model"]}`;
   this.caliber = data["caliber"];
@@ -18,13 +19,13 @@ $(function() {
     $.get("/firearms/" + id + ".json", function(data) {
       var firearm = new Firearm(data);
       //this will insert the data response into the sideNav element of firearms/index.html
-      //need a prototype method for the Firearm object to format the name
       $(".firearmName").text(firearm.name);
       $(".firearmCaliber").text(firearm.caliber);
       $(".firearmSerial").text(firearm.serial);
       $(".firearmPrice").text(firearm.price);
       $(".firearmPurchase").text(firearm.purchaseDate);
     });
+    // Opens the sideNav element which contains firearms info
     document.getElementById("sideNav").style.width = "500px";
   });
 

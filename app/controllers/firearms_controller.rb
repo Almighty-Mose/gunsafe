@@ -6,12 +6,6 @@ class FirearmsController < ApplicationController
     if @current_user.firearms.count == 0
       redirect_to new_firearm_path
     end
-    
-    # if !params[:category].blank?
-    #   @firearms = @current_user.firearms.category(params[:category])
-    # else
-    #   @firearms = @current_user.firearms
-    # end
 
     @rifles = @current_user.firearms.category("Rifle")
     @pistols = @current_user.firearms.category("Pistol")
