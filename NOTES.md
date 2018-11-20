@@ -163,7 +163,10 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
 # MUST RENDER A SHOW PAGE (ONE SPECIFIC THING)
   + Using firearm's sidebar (see DESIGN below)
   Sidebar also contains NEXT and PREVIOUS, which will fetch another firearm resource by AJAX and render through JS.
-  AMS Serialization
+    Next button needs to grab USER'S next firearm
+      Would also like it to disappear once end of list is reached
+    Previous button does same
+  + AMS Serialization
 
 # MUST DYNAMICALLY RENDER A HAS-MANY RELATIONSHIP ON PAGE
   Rendering accessories on firearms show page
