@@ -12,19 +12,24 @@ function Firearm(data) {
   this.id = data["id"];
 }
 
+function insertData(id) {
+  $.get("/firearms/" + id + ".json", function (data) {
+    var firearm = new Firearm(data);
+    //this will insert the data response into the sideNav element of firearms/index.html
+    $(".js-next").attr("data-id", firearm.id);
+    $(".firearmName").text(firearm.name);
+    $(".firearmCaliber").text(firearm.caliber);
+    $(".firearmSerial").text(firearm.serial);
+    $(".firearmPrice").text(firearm.price);
+    $(".firearmPurchase").text(firearm.purchaseDate);
+  });
+}
+
 $(function() {
   $('.openSideNav').click(function(event) {
     event.preventDefault();
     var id = $(this).data("id");
-    $.get("/firearms/" + id + ".json", function(data) {
-      var firearm = new Firearm(data);
-      //this will insert the data response into the sideNav element of firearms/index.html
-      $(".firearmName").text(firearm.name);
-      $(".firearmCaliber").text(firearm.caliber);
-      $(".firearmSerial").text(firearm.serial);
-      $(".firearmPrice").text(firearm.price);
-      $(".firearmPurchase").text(firearm.purchaseDate);
-    });
+    insertData(id);
     // Opens the sideNav element which contains firearms info
     document.getElementById("sideNav").style.width = "500px";
   });
@@ -33,4 +38,15 @@ $(function() {
     //expand or collapse this panel
     $(this).next().slideToggle('fast');
   });
+
+  $(".js-next").click(function(event) {
+    event.preventDefault();
+    //hey so this works, but it grabs the very next database entry.
+    //this is bad because the user's firearms entries are not consecutive.
+    //create a function that grabs the USERS next firearm
+    //possibly in list order?
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    insertData(nextId);
+  });
 });
+

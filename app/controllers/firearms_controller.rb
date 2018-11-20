@@ -29,7 +29,7 @@ class FirearmsController < ApplicationController
   def show
     respond_to do |format|
       format.html {render :show}
-      format.json {render json: @firearm.to_json}
+      format.json {render json: @firearm}
     end
   end
 

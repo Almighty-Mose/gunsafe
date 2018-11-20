@@ -158,7 +158,7 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
   Fetch firearms with AJAX
   + Render the firearms as JSON in controller
   + Append those firearms to page
-  AMS Serialization
+  + AMS Serialization
 
 # MUST RENDER A SHOW PAGE (ONE SPECIFIC THING)
   + Using firearm's sidebar (see DESIGN below)
