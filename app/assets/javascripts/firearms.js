@@ -25,8 +25,27 @@ function insertData(id) {
   });
 }
 
+// function populateFirearmsIndex() {
+//   //We need to grab all the user's firearms
+//   $.get("/firearms.json", function(firearmData) {
+//     //We need to parse the JSON objects by category
+//     firearmData.forEach(function(firearm) {
+//       if (firearm.category === "Rifle") {
+//         console.log(firearm)
+//         $("#rifle-list").append(
+//           `<li><a href="javascript:void(0)" data-id="${firearm.id}" class="openSideNav">${firearm.make}</a></li>`
+//         );
+//       };
+//     });
+//   });
+
+//   //We need to insert those parsed objects into the DOM
+// }
+
 $(function() {
-  $('.openSideNav').click(function(event) {
+  // populateFirearmsIndex();
+
+  $('.openSideNav').on('click', function(event) {
     event.preventDefault();
     var id = $(this).data("id");
     insertData(id);

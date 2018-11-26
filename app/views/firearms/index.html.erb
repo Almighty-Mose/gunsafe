@@ -7,7 +7,7 @@
 <div id="firearmList">
   <button class="accordion">Rifles</button>
   <div class="panel">
-    <ul>
+    <ul id="rifle-list">
       <% @rifles.each do |rifle| %>
         <li><a href="javascript:void(0)" data-id="<%= rifle.id %>" class="openSideNav"><%= rifle.name %></a></li>
       <% end %>
@@ -15,7 +15,7 @@
   </div>
   <button class="accordion">Pistols</button>
   <div class="panel">
-    <ul>
+    <ul id="pistol-list">
       <% @pistols.each do |pistol| %>
         <li><a href="javascript:void(0)" data-id="<%= pistol.id %>" class="openSideNav"><%= pistol.name %></a></li>
       <% end %>
@@ -23,7 +23,7 @@
   </div>
   <button class="accordion">Shotguns</button>
   <div class="panel">
-    <ul>
+    <ul id="shotgun-list">
       <% @shotguns.each do |shotgun| %>
         <li><a href="javascript:void(0)" data-id="<%= shotgun.id %>" class="openSideNav"><%= shotgun.name %></a></li>
       <% end %>
@@ -32,8 +32,9 @@
 </div>
 
 <div id="sideNav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <button class="js-prev" data-id="">Previous</button>
   <button class="js-next" data-id="">Next</button>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <h2 class="firearmName">Name</h2>
 
   <hr>
