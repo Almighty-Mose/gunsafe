@@ -25,29 +25,27 @@ function insertData(id) {
   });
 }
 
-// function populateFirearmsIndex() {
-//   //We need to grab all the user's firearms
-//   $.get("/firearms.json", function(firearmData) {
-//     //We need to parse the JSON objects by category
-//     firearmData.forEach(function(firearm) {
-//       if (firearm.category === "Rifle") {
-//         console.log(firearm)
-//         $("#rifle-list").append(
-//           `<li><a href="javascript:void(0)" data-id="${firearm.id}" class="openSideNav">${firearm.make}</a></li>`
-//         );
-//       };
-//     });
-//   });
+const firearmIds = [];
 
-//   //We need to insert those parsed objects into the DOM
-// }
+function populateFirearmsIndex() {
+  //We need to grab all the user's firearms
+  $.get("/firearms.json", function(firearmData) {
+    //We need to parse the JSON objects by category
+    firearmData.forEach(function(firearm) {
+      firearmIds.push(firearm.id);
+    });
+    console.log(firearmIds)
+  });
+
+  //We need to insert those parsed objects into the DOM
+}
 
 $(function() {
-  // populateFirearmsIndex();
+  populateFirearmsIndex();
 
   $('.openSideNav').on('click', function(event) {
     event.preventDefault();
-    var id = $(this).data("id");
+    let id = $(this).data("id");
     insertData(id);
     // Opens the sideNav element which contains firearms info
     document.getElementById("sideNav").style.width = "500px";
@@ -60,12 +58,18 @@ $(function() {
 
   $(".js-next").click(function(event) {
     event.preventDefault();
-    //hey so this works, but it grabs the very next database entry.
-    //this is bad because the user's firearms entries are not consecutive.
-    //create a function that grabs the USERS next firearm
-    //possibly in list order?
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    let firearmId = parseInt($(".js-next").attr("data-id"));
+    let arrayIndex = firearmIds.indexOf(firearmId);
+    let nextId = firearmIds[arrayIndex + 1];
     insertData(nextId);
   });
+
+  $(".js-prev").click(function(event) {
+    event.preventDefault();
+    let firearmId = parseInt($(".js-next").attr("data-id"));
+    let arrayIndex = firearmIds.indexOf(firearmId);
+    let prevId = firearmIds[arrayIndex - 1];
+    insertData(prevId)
+  })
 });
 
