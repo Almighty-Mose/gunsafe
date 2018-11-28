@@ -30,11 +30,21 @@ const firearmIds = [];
 function populateFirearmsIndex() {
   //We need to grab all the user's firearms
   $.get("/firearms.json", function(firearmData) {
-    //We need to parse the JSON objects by category
+    let list = document.getElementById("rifle-list");
+    //This stores the ID of all the user's firearms in the constant
+    //firearmIds, so the next and previous buttons can access them.
     firearmData.forEach(function(firearm) {
       firearmIds.push(firearm.id);
+      let f = new Firearm(firearm);
+      let li = document.createElement("li");
+      let a = document.createElement("a");
+      a.setAttribute('href', "javascript:void(0)");
+      a.setAttribute("data-id", f.id);
+      a.setAttribute("class", "openSideNav");
+      a.innerHTML = f.name;
+      list.append(li);
+      li.appendChild(a);
     });
-    console.log(firearmIds)
   });
 
   //We need to insert those parsed objects into the DOM
@@ -43,7 +53,7 @@ function populateFirearmsIndex() {
 $(function() {
   populateFirearmsIndex();
 
-  $('.openSideNav').on('click', function(event) {
+  $("ul").on("click", "a", function(event) {
     event.preventDefault();
     let id = $(this).data("id");
     insertData(id);
