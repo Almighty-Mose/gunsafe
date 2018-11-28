@@ -154,15 +154,12 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
 
 # MUST RENDER AN INDEX PAGE (LIST OF THINGS)
   + Firearms Index will render the list of a user's firearms
-  Here's the JS function that will sort a user's firearms into categories:
-
-  firearms.filter(firearm => firearm.category === "Rifle")
   
   We need to hijack the GET request in order to use JS, but we also need
   the index page to be rendered first.
 
-  Refactor using AJAX
-  Fetch firearms with AJAX
+  + Refactor using AJAX
+  + Fetch firearms with AJAX
   + Render the firearms as JSON in controller
   + Append those firearms to page
   + AMS Serialization

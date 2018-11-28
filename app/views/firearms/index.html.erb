@@ -8,23 +8,16 @@
   <button class="accordion">Rifles</button>
   <div class="panel">
     <ul id="rifle-list">
-
     </ul>
   </div>
   <button class="accordion">Pistols</button>
   <div class="panel">
     <ul id="pistol-list">
-      <% @pistols.each do |pistol| %>
-        <li><a href="javascript:void(0)" data-id="<%= pistol.id %>"><%= pistol.name %></a></li>
-      <% end %>
     </ul>
   </div>
   <button class="accordion">Shotguns</button>
   <div class="panel">
     <ul id="shotgun-list">
-      <% @shotguns.each do |shotgun| %>
-        <li><a href="javascript:void(0)" data-id="<%= shotgun.id %>"><%= shotgun.name %></a></li>
-      <% end %>
     </ul>
   </div>
 </div>

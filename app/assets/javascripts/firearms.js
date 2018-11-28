@@ -10,6 +10,7 @@ function Firearm(data) {
   this.serial = data["serial_number"];
   this.purchaseDate = data["purchase_date"];
   this.id = data["id"];
+  this.category = data["category"]
 }
 
 function insertData(id) {
@@ -27,32 +28,41 @@ function insertData(id) {
 
 const firearmIds = [];
 
+//populateFirearmsIndex generates links for each firearm and sorts them into appropriate containers
+//called on firearms.js line 64
 function populateFirearmsIndex() {
   //We need to grab all the user's firearms
   $.get("/firearms.json", function(firearmData) {
-    let list = document.getElementById("rifle-list");
-    //This stores the ID of all the user's firearms in the constant
-    //firearmIds, so the next and previous buttons can access them.
+    //Iterate over the JSON response, which is an array of firearms
     firearmData.forEach(function(firearm) {
+      //Push the ID of each firearm into the firearmIds const
       firearmIds.push(firearm.id);
+      //lines 39-41 create new objects and containers for each firearm
       let f = new Firearm(firearm);
       let li = document.createElement("li");
       let a = document.createElement("a");
+      //set the required attributes for the firearm's <a> tag
       a.setAttribute('href', "javascript:void(0)");
       a.setAttribute("data-id", f.id);
-      a.setAttribute("class", "openSideNav");
       a.innerHTML = f.name;
-      list.append(li);
+      //SORT!
+      if (f.category === "Rifle") {
+        var list = document.getElementById("rifle-list")
+      } else if (f.category === "Pistol") {
+        var list = document.getElementById("pistol-list")
+      } else if (f.category === "Shotgun") {
+        var list = document.getElementById("shotgun-list")
+      };
+      //Add the <li> to the proper list, then add in the formatted <a>
+      list.appendChild(li);
       li.appendChild(a);
     });
   });
-
-  //We need to insert those parsed objects into the DOM
-}
+};
 
 $(function() {
   populateFirearmsIndex();
-
+  
   $("ul").on("click", "a", function(event) {
     event.preventDefault();
     let id = $(this).data("id");
