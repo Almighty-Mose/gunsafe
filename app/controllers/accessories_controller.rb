@@ -27,7 +27,7 @@ class AccessoriesController < ApplicationController
   end
 
   def show
-
+    render json: @accessory, status: 200
   end
 
   def edit
