@@ -13,7 +13,7 @@ function Firearm(data) {
   this.category = data["category"]
 }
 
-function insertData(id) {
+function insertFirearm(id) {
   $.get("/firearms/" + id + ".json", function (data) {
     var firearm = new Firearm(data);
     //this will insert the data response into the sideNav element of firearms/index.html
@@ -23,6 +23,20 @@ function insertData(id) {
     $(".firearmSerial").text(firearm.serial);
     $(".firearmPrice").text(firearm.price);
     $(".firearmPurchase").text(firearm.purchaseDate);
+    let accessories = data["accessories"];
+    insertAccessories(accessories);
+  });
+}
+
+function insertAccessories(accessories) {
+  let list = document.getElementById("accessory-list");
+  $(list).empty();
+  accessories.forEach(function (accessory) {
+    //create an <li> for each accessory
+    let li = document.createElement("li");
+    li.innerHTML = accessory.name;
+    //insert the <li> into the DOM
+    list.appendChild(li);
   });
 }
 
@@ -66,7 +80,7 @@ $(function() {
   $("ul").on("click", "a", function(event) {
     event.preventDefault();
     let id = $(this).data("id");
-    insertData(id);
+    insertFirearm(id);
     // Opens the sideNav element which contains firearms info
     document.getElementById("sideNav").style.width = "500px";
   });
@@ -81,7 +95,7 @@ $(function() {
     let firearmId = parseInt($(".js-next").attr("data-id"));
     let arrayIndex = firearmIds.indexOf(firearmId);
     let nextId = firearmIds[arrayIndex + 1];
-    insertData(nextId);
+    insertFirearm(nextId);
   });
 
   $(".js-prev").click(function(event) {
@@ -89,7 +103,7 @@ $(function() {
     let firearmId = parseInt($(".js-next").attr("data-id"));
     let arrayIndex = firearmIds.indexOf(firearmId);
     let prevId = firearmIds[arrayIndex - 1];
-    insertData(prevId)
+    insertFirearm(prevId)
   })
 });
 
