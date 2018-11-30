@@ -7,15 +7,6 @@ class FirearmsController < ApplicationController
       redirect_to new_firearm_path
     end
 
-    # This makes 3 separate SQL queries, which I don't like.
-    @rifles = @current_user.firearms.category("Rifle")
-    @pistols = @current_user.firearms.category("Pistol")
-    @shotguns = @current_user.firearms.category("Shotgun")
-    
-    # Take that away, it will be the responsibility of the JS function
-    # that receives this call to sort the firearm instances.
-    # The controller should just serve up the raw JSON data
-
     @firearms = @current_user.firearms
 
     respond_to do |format|
