@@ -1,5 +1,9 @@
-function closeDrawer() {
+function closeFirearmDrawer() {
   document.getElementById("firearmDrawer").style.width = "0px";
+}
+
+function closeAccessoryDrawer() {
+  document.getElementById("accessoryDrawer").style.width = "0px";
 }
 
 // Firearm constructor creates firearm objects for later consumption by jQuery
@@ -29,7 +33,7 @@ function insertFirearm(id) {
 }
 
 function insertAccessories(accessories) {
-  let list = document.getElementById("accessory-list");
+  let list = document.getElementById("accessoryList");
   $(list).empty();
   accessories.forEach(function (accessory) {
     //create an <li> for each accessory
@@ -81,7 +85,7 @@ function populateFirearmsIndex() {
 
 $(function() {
   populateFirearmsIndex();
-  
+
   $("#firearmList").on("click", "a", function(event) {
     event.preventDefault();
     let id = $(this).data("id");
