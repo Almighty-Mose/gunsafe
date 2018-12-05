@@ -22,11 +22,11 @@
   </div>
 </div>
 
-<div id="firearmDrawer" class="firearmDrawer">
+<div id="firearmDrawer" class="drawer">
   <button class="js-prev">Previous</button>
   <button class="js-next" data-id="">Next</button>
   <a href="javascript:void(0)" class="closebtn" onclick="closeDrawer()">&times;</a>
-  <h2 class="firearmName">Name</h2>
+  <h2 class="firearmName"></h2>
 
   <hr>
 
@@ -36,12 +36,19 @@
   <p>Purchase Date: <span class="firearmPurchase"></span></p>
   
   <div id="accessory-container">
+    <h4>Accessories</h4>
     <button id="js-accessory-add">Add an Accessory</button>
     <ul id="accessory-list">
     </ul>
   </div>
 </div>
 
-<div id="accessoryDrawer">
+<div id="accessoryDrawer" class="drawer">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeDrawer()">&times;</a>
+  <h2 class="accessoryName"></h2>
 
+  <hr>
+
+  <p>Purchase Price: $<span class="accessoryPrice"></span></p>
+  <p>Purchase Date: <span class="accessoryPurchase"></span></p>
 </div>
