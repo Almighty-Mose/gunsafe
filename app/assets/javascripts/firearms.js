@@ -34,9 +34,14 @@ function insertAccessories(accessories) {
   accessories.forEach(function (accessory) {
     //create an <li> for each accessory
     let li = document.createElement("li");
-    li.innerHTML = accessory.name;
-    //insert the <li> into the DOM
+    let a = document.createElement("a");
+    //set the required attributes for the accessory's <a> tag
+    a.setAttribute('href', "javascript:void(0)");
+    a.setAttribute("data-id", accessory.id);
+    a.setAttribute("class", "js-accessory")
+    a.innerHTML = accessory.name;
     list.appendChild(li);
+    li.appendChild(a);
   });
 }
 
@@ -77,7 +82,7 @@ function populateFirearmsIndex() {
 $(function() {
   populateFirearmsIndex();
   
-  $("ul").on("click", "a", function(event) {
+  $("#firearmList").on("click", "a", function(event) {
     event.preventDefault();
     let id = $(this).data("id");
     insertFirearm(id);

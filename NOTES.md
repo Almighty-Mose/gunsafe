@@ -173,7 +173,8 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
   + AMS Serialization
 
 # MUST DYNAMICALLY RENDER A HAS-MANY RELATIONSHIP ON PAGE
-  Rendering accessories on firearms show page
+  + Rendering accessories on firearms show page
+  Accessory entries are links that pull open a separate drawer containing information
 
 # MUST USE JS TO RENDER A FORM TO CREATE RESOURCE DYNAMICALLY
   Use the firearm's new form
@@ -199,19 +200,10 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
     + When you click a firearm, a sidebar (with opacity?) slides over and   contains detailed firearm information
     Firearms can have an image of that firearm displayed in sidebar
   # Accessory info/add in firearm sidebar
-    Accessories are included
+    + Accessories are included
     Move the form for adding an accessory into the sidebar
 
 # MAKE EVERYTHING BIGGER
 
 
 # BUY/SELL?
-
-
-
-
-
-
-
-
-
