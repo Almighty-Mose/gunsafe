@@ -1,5 +1,5 @@
-function closeNav() {
-  document.getElementById("sideNav").style.width = "0px";
+function closeDrawer() {
+  document.getElementById("firearmDrawer").style.width = "0px";
 }
 
 // Firearm constructor creates firearm objects for later consumption by jQuery
@@ -16,7 +16,7 @@ function Firearm(data) {
 function insertFirearm(id) {
   $.get("/firearms/" + id + ".json", function (data) {
     var firearm = new Firearm(data);
-    //this will insert the data response into the sideNav element of firearms/index.html
+    //this will insert the data response into the firearmDrawer element of firearms/index.html
     $(".js-next").attr("data-id", firearm.id);
     $(".firearmName").text(firearm.name);
     $(".firearmCaliber").text(firearm.caliber);
@@ -86,8 +86,8 @@ $(function() {
     event.preventDefault();
     let id = $(this).data("id");
     insertFirearm(id);
-    // Opens the sideNav element which contains firearms info
-    document.getElementById("sideNav").style.width = "500px";
+    // Opens the firearmDrawer element which contains firearms info
+    document.getElementById("firearmDrawer").style.width = "500px";
   });
 
   $('#firearmList').find('.accordion').click(function() {
