@@ -174,7 +174,7 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
 
 # MUST DYNAMICALLY RENDER A HAS-MANY RELATIONSHIP ON PAGE
   + Rendering accessories on firearms show page
-  Accessory entries are links that pull open a separate drawer containing information
+  + Accessory entries are links that pull open a separate drawer containing information
 
 # MUST USE JS TO RENDER A FORM TO CREATE RESOURCE DYNAMICALLY
   Use the firearm's new form
@@ -183,7 +183,7 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
     Will dynamically append to a firearm show sidebar
 
 # MUST USE JS MODEL OBJECTS
-  + Need to have one prototype method
+  Need to have one prototype method
   + Firearm's make + model
 
 

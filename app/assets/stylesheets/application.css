@@ -27,10 +27,6 @@ body {
   flex: 1 1 auto;
 }
 
-select#category {
-  width: 100px;
-}
-
 .button_to {
   display: inline;
 }
@@ -48,6 +44,12 @@ hr {
 
 a:link {
   text-decoration: none;
+}
+
+/* Removes the styling of list items */
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 /*-------FOOTER----------*/
