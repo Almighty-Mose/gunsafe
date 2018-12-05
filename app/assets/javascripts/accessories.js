@@ -6,6 +6,6 @@ $(function() {
       $(".accessoryPrice").text(data.price)
       $(".accessoryPurchase").text(data.purchase_date)
     });
-    document.getElementById("accessoryDrawer").style.width = "500px";
+    $("#accessoryDrawer").css('width', '500px');
   });
 });

@@ -1,9 +1,11 @@
 function closeFirearmDrawer() {
-  document.getElementById("firearmDrawer").style.width = "0px";
+  // document.getElementById("firearmDrawer").style.width = "0px";
+  $("#firearmDrawer").css('width', '0px');
 }
 
 function closeAccessoryDrawer() {
-  document.getElementById("accessoryDrawer").style.width = "0px";
+  // document.getElementById("accessoryDrawer").style.width = "0px";
+  $("#accessoryDrawer").css('width', '0px');
 }
 
 // Firearm constructor creates firearm objects for later consumption by jQuery
@@ -33,8 +35,8 @@ function insertFirearm(id) {
 }
 
 function insertAccessories(accessories) {
-  let list = document.getElementById("accessoryList");
-  $(list).empty();
+  let $list = $("#accessoryList");
+  $($list).empty();
   accessories.forEach(function (accessory) {
     //create an <li> for each accessory
     let li = document.createElement("li");
@@ -44,7 +46,7 @@ function insertAccessories(accessories) {
     a.setAttribute("data-id", accessory.id);
     a.setAttribute("class", "js-accessory")
     a.innerHTML = accessory.name;
-    list.appendChild(li);
+    $list.append(li);
     li.appendChild(a);
   });
 }
@@ -70,14 +72,14 @@ function populateFirearmsIndex() {
       a.innerHTML = f.name;
       //SORT!
       if (f.category === "Rifle") {
-        var list = document.getElementById("rifle-list")
+        var $list = $("#rifle-list")
       } else if (f.category === "Pistol") {
-        var list = document.getElementById("pistol-list")
+        var $list = $("#pistol-list")
       } else if (f.category === "Shotgun") {
-        var list = document.getElementById("shotgun-list")
+        var $list = $("#shotgun-list")
       };
       //Add the <li> to the proper list, then add in the formatted <a>
-      list.appendChild(li);
+      $list.append(li);
       li.appendChild(a);
     });
   });
@@ -86,12 +88,12 @@ function populateFirearmsIndex() {
 $(function() {
   populateFirearmsIndex();
 
-  $("#firearmList").on("click", "a", function(event) {
-    event.preventDefault();
+  $("#firearmList").on("click", "a", function(e) {
+    e.preventDefault();
     let id = $(this).data("id");
     insertFirearm(id);
     // Opens the firearmDrawer element which contains firearms info
-    document.getElementById("firearmDrawer").style.width = "500px";
+    $("#firearmDrawer").css('width', '500px');
   });
 
   $('#firearmList').find('.accordion').click(function() {
@@ -99,16 +101,16 @@ $(function() {
     $(this).next().slideToggle('fast');
   });
 
-  $(".js-next").click(function(event) {
-    event.preventDefault();
+  $(".js-next").click(function(e) {
+    e.preventDefault();
     let firearmId = parseInt($(".js-next").attr("data-id"));
     let arrayIndex = firearmIds.indexOf(firearmId);
     let nextId = firearmIds[arrayIndex + 1];
     insertFirearm(nextId);
   });
 
-  $(".js-prev").click(function(event) {
-    event.preventDefault();
+  $(".js-prev").click(function(e) {
+    e.preventDefault();
     let firearmId = parseInt($(".js-next").attr("data-id"));
     let arrayIndex = firearmIds.indexOf(firearmId);
     let prevId = firearmIds[arrayIndex - 1];
