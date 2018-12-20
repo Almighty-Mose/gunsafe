@@ -4,7 +4,7 @@ class FirearmsController < ApplicationController
 
   def index
     if @current_user.firearms.count == 0
-      redirect_to new_firearm_path
+      redirect_to new_firearm_path and return
     end
 
     @firearms = @current_user.firearms

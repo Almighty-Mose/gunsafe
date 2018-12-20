@@ -85,7 +85,7 @@ function populateFirearmsIndex() {
   });
 };
 
-$(function() {
+$(document).on('turbolinks:load', function() {
   populateFirearmsIndex();
 
   $("#firearmList").on("click", "a", function(e) {
