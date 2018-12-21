@@ -177,13 +177,11 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
   + Accessory entries are links that pull open a separate drawer containing information
 
 # MUST USE JS TO RENDER A FORM TO CREATE RESOURCE DYNAMICALLY
-  Use the firearm's new form
-    Will dynamically append to the index page
   Use accessory's new form
-    Will dynamically append to a firearm show sidebar
+    + Will dynamically append to a firearm show sidebar
 
 # MUST USE JS MODEL OBJECTS
-  Need to have one prototype method
+  + Need to have one prototype method
   + Firearm's make + model
 
 
@@ -195,7 +193,7 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
     Arrow on left pointing to category which turns down upon click
   # Clicking a category exposes a dropdown or drawer which contains all firearms of that category
     + Basically just exposes the list of firearms of that type
-    +  Animated drawer slides open
+    + Animated drawer slides open
   # Sidebar drawer for firearms
     + When you click a firearm, a sidebar (with opacity?) slides over and   contains detailed firearm information
     Firearms can have an image of that firearm displayed in sidebar

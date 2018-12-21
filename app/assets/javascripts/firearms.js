@@ -19,16 +19,20 @@ function Firearm(data) {
   this.category = data["category"]
 }
 
+Firearm.prototype.insertIntoDrawer = function() {
+  $(".js-next").attr("data-id", this.id);
+  $(".firearmName").text(this.name);
+  $(".firearmCaliber").text(this.caliber);
+  $(".firearmSerial").text(this.serial);
+  $(".firearmPrice").text(this.price);
+  $(".firearmPurchase").text(this.purchaseDate);
+}
+
 function insertFirearm(id) {
   $.get("/firearms/" + id + ".json", function (data) {
     var firearm = new Firearm(data);
     //this will insert the data response into the firearmDrawer element of firearms/index.html
-    $(".js-next").attr("data-id", firearm.id);
-    $(".firearmName").text(firearm.name);
-    $(".firearmCaliber").text(firearm.caliber);
-    $(".firearmSerial").text(firearm.serial);
-    $(".firearmPrice").text(firearm.price);
-    $(".firearmPurchase").text(firearm.purchaseDate);
+    firearm.insertIntoDrawer();
     let accessories = data["accessories"];
     insertAccessories(accessories);
   });
