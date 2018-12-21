@@ -55,3 +55,20 @@
   <p>Purchase Price: $<span class="accessoryPrice"></span></p>
   <p>Purchase Date: <span class="accessoryPurchase"></span></p>
 </div>
+
+<script>
+  <form>
+    <fieldset>
+      <legend>New Accessory</legend>
+      <input placeholder="Accessory Name" type="text" name="firearm[accessories_attributes][0][name]" id="firearm_accessories_attributes_0_name" />
+      <input placeholder="Accessory Price" type="number" name="firearm[accessories_attributes][0][price]" id="firearm_accessories_attributes_0_price" />
+      <input placeholder="Date Purchased - MM/DD/YYYY" type="text" name="firearm[accessories_attributes][0][purchase_date]" id="firearm_accessories_attributes_0_purchase_date" />
+      <select name="firearm[accessories_attributes][0][category]" id="firearm_accessories_attributes_0_category"><option value="Optic">Optic</option>
+        <option value="Sling">Sling</option>
+        <option value="Light">Light</option>
+        <option value="Trigger">Trigger</option>
+        <option value="Other">Other</option>
+      </select>
+    </fieldset>
+  </form>
+</script>
