@@ -39,7 +39,18 @@
     <h4>Accessories</h4>
     <button id="js-accessory-add">Add an Accessory</button>
       <div id="new-accessory-form">
-        
+        <form class="new_accessory" id="new_accessory" action="/accessories" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="dwDd67Kdca+oRA2J8K7SQxXubNca1r9sK7uS1e/ym9wwckr9CS1A4WLDNtaVIXSB+u3Qb5/EbNrvkHcCHMfqYQ==" />
+          <input value="3" type="hidden" name="accessory[firearm_id]" id="accessory_firearm_id" />
+          <input placeholder="Name" type="text" name="accessory[name]" id="accessory_name" />
+          <input placeholder="Price" type="number" name="accessory[price]" id="accessory_price" />
+          <input placeholder="Date Purchased - MM/DD/YYYY" type="text" name="accessory[purchase_date]" id="accessory_purchase_date" />
+          <select name="accessory[category]" id="accessory_category"><option value="Optic">Optic</option>
+            <option value="Sling">Sling</option>
+            <option value="Light">Light</option>
+            <option value="Trigger">Trigger</option>
+            <option value="Other">Other</option></select>
+          <input type="submit" name="commit" value="Create Accessory" data-disable-with="Create Accessory" />
+        </form>
       </div>
     <ul id="accessoryList">
     </ul>

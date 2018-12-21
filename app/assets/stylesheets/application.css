@@ -25,6 +25,7 @@ body {
 
 #container {
   flex: 1 1 auto;
+  width: 55%;
 }
 
 .button_to {
@@ -47,9 +48,9 @@ a:link {
 }
 
 /* Removes the styling of list items */
-ul {
+#firearmList ul {
   list-style-type: none;
-  padding: 0;
+  padding-left: 0;
 }
 
 /*-------FOOTER----------*/
