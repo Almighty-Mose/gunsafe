@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(function() {
   $("#accessoryList").on("click", "a", function() {
     let id = $(this).data("id");
     $.get("/accessories/" + id + ".json", function(data) {
