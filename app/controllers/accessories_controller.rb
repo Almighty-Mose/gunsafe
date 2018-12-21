@@ -19,7 +19,8 @@ class AccessoriesController < ApplicationController
     @firearm = Firearm.find(params[:accessory][:firearm_id])
     @accessory = @firearm.accessories.create(accessory_params)
     if @accessory.save
-      redirect_to firearm_path(@firearm)
+      # redirect_to firearm_path(@firearm)
+      render json: @accessory, status: 201
     else
       params[:firearm_id] = @firearm.id
       render :new
