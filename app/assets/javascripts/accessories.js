@@ -9,9 +9,10 @@ $(function() {
     $("#accessoryDrawer").css('width', '500px');
   });
 
-  $("#new_accessory").on("submit", function(e) {
+  //Attaches the accessory form submission event listener to the form container for event delegation
+  $("#new-accessory-form").on("submit", function(e) {
     e.preventDefault();
-    let values = $(this).serialize();
+    let values = $("#new_accessory").serialize();
     let posting = $.post('/accessories', values);
     posting.done(function(accessory_response) {
       let $list = $("#accessoryList");
@@ -25,14 +26,20 @@ $(function() {
       a.innerHTML = accessory_response.name;
       $list.append(li);
       li.appendChild(a);
+      $("#new-accessory-form").empty();
     });
   });
 
+  //Displays the Add an Accessory form in the Firearm Drawer
   $("#js-accessory-add").on("click", function(e) {
     e.preventDefault()
     let $container = $("#new-accessory-form")
-    let context = {"firearm-id": 1}
-    //Now i just need to figure out how to grab the ID of the firearm I'm working with.
+    let firearmId = parseInt($(".js-next").attr("data-id"));
+    let token = $('meta[name="csrf-token"]').attr('content');
+    let context = {
+      "firearm-id": firearmId,
+      "csrf": token
+    }
     let template = HandlebarsTemplates['accessories/new'](context);
     $container.html(template);
   });

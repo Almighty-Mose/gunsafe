@@ -1,4 +1,5 @@
 <form class="new_accessory" id="new_accessory" action="/accessories" accept-charset="UTF-8" method="post">
+    <input type="hidden" name="authenticity_token" value="{{csrf}}">
     <input value="{{firearm-id}}" type="hidden" name="accessory[firearm_id]" id="accessory_firearm_id" />
     <input placeholder="Name" type="text" name="accessory[name]" id="accessory_name" />
     <input placeholder="Price" type="number" name="accessory[price]" id="accessory_price" />
