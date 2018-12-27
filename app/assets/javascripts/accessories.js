@@ -30,10 +30,10 @@ $(function() {
 
   $("#js-accessory-add").on("click", function(e) {
     e.preventDefault()
+    let $container = $("#new-accessory-form")
     let context = {"firearm-id": 1}
     //Now i just need to figure out how to grab the ID of the firearm I'm working with.
     let template = HandlebarsTemplates['accessories/new'](context);
-    console.log(template);
-    console.log(context);
+    $container.html(template);
   });
 });

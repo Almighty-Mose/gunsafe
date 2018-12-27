@@ -1,6 +1,8 @@
 function closeFirearmDrawer() {
   // document.getElementById("firearmDrawer").style.width = "0px";
   $("#firearmDrawer").css('width', '0px');
+  //clears the accessory form if opened
+  $("#new-accessory-form").empty();
 }
 
 function closeAccessoryDrawer() {
