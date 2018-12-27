@@ -1,0 +1,14 @@
+<form class="new_accessory" id="new_accessory" action="/accessories" accept-charset="UTF-8" method="post">
+    <input value="{{firearm-id}}" type="hidden" name="accessory[firearm_id]" id="accessory_firearm_id" />
+    <input placeholder="Name" type="text" name="accessory[name]" id="accessory_name" />
+    <input placeholder="Price" type="number" name="accessory[price]" id="accessory_price" />
+    <input placeholder="Date Purchased - MM/DD/YYYY" type="text" name="accessory[purchase_date]" id="accessory_purchase_date" />
+    <select name="accessory[category]" id="accessory_category">
+        <option value="Optic">Optic</option>
+        <option value="Sling">Sling</option>
+        <option value="Light">Light</option>
+        <option value="Trigger">Trigger</option>
+        <option value="Other">Other</option>
+    </select>
+    <input type="submit" name="commit" value="Create Accessory" data-disable-with="Create Accessory" />
+</form>

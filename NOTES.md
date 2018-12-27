@@ -179,6 +179,8 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
 # MUST USE JS TO RENDER A FORM TO CREATE RESOURCE DYNAMICALLY
   Use accessory's new form
     + Will dynamically append to a firearm show sidebar
+    Creation of accessory clears form from firearm drawer after creation
+    Form is contained in a JS method that reveals on click of "Add an accessory"
 
 # MUST USE JS MODEL OBJECTS
   + Need to have one prototype method

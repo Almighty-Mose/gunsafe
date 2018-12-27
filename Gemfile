@@ -39,6 +39,7 @@ gem 'jquery-rails'
 
 gem 'active_model_serializers'
 
+gem 'handlebars_assets'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
