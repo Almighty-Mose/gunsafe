@@ -10,7 +10,7 @@ function closeAccessoryDrawer() {
   $("#accessoryDrawer").css('width', '0px');
 }
 
-// Firearm constructor creates firearm objects for later consumption by jQuery
+// Firearm class constructor creates firearm objects for later consumption by jQuery
 function Firearm(data) {
   this.name = `${data["make"]} ${data["model"]}`;
   this.caliber = data["caliber"];
@@ -23,6 +23,7 @@ function Firearm(data) {
 
 Firearm.prototype.insertIntoDrawer = function() {
   $(".js-next").attr("data-id", this.id);
+  $("#edit-button").attr("href", `firearms/${this.id}/edit`)
   $(".firearmName").text(this.name);
   $(".firearmCaliber").text(this.caliber);
   $(".firearmSerial").text(this.serial);
