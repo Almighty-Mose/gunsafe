@@ -203,7 +203,10 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
     + Accessories are included
     + Move the form for adding an accessory into the sidebar
 
-# MAKE EVERYTHING BIGGER
-
+# TO DO
+  # Make firearms editable in place in firearmDrawer
+    I want the user to click the "Edit Firearm" button, which transforms the firearm's information to form fields.
+    I want the "Edit Firearm" button to change to the "Submit" or "Update" button
+    I want the user to be able to edit information, click the submit button, and without a refresh, the new information is shown without leaving firearmDrawer
 
 # BUY/SELL?

@@ -37,13 +37,13 @@ class FirearmsController < ApplicationController
   end
 
   def edit
-
+    
   end
 
   def update
     @firearm.update(firearm_params)
     if @firearm.save
-      redirect_to @firearm
+      redirect_to firearms_path
     else
       render :edit
     end
@@ -53,11 +53,6 @@ class FirearmsController < ApplicationController
     @firearm.destroy
 
     redirect_to firearms_path
-  end
-
-  def info
-    firearm = Firearm.find(params[:id])
-    render json: firearm.to_json
   end
 
   private

@@ -1,16 +1,9 @@
-function closeFirearmDrawer() {
-  // document.getElementById("firearmDrawer").style.width = "0px";
-  $("#firearmDrawer").css('width', '0px');
-  //clears the accessory form if opened
-  $("#new-accessory-form").empty();
-}
+// All the Javascript for the firearms/index page
 
-function closeAccessoryDrawer() {
-  // document.getElementById("accessoryDrawer").style.width = "0px";
-  $("#accessoryDrawer").css('width', '0px');
-}
-
-// Firearm class constructor creates firearm objects for later consumption by jQuery
+/** 
+ * Firearm class constructor creates firearm objects 
+ * for later consumption by jQuery
+*/
 class Firearm {
   constructor(data) {
     this.name = `${data["make"]} ${data["model"]}`;
@@ -23,34 +16,76 @@ class Firearm {
   }
 }
 
+/**
+ * insertIntoDrawer() populates the firearmDrawer elements
+ * 
+ * invoked on line 66
+ */
 Firearm.prototype.insertIntoDrawer = function() {
   $(".js-next").attr("data-id", this.id);
-  $("#edit-button").attr("href", `firearms/${this.id}/edit`)
   $(".firearmName").text(this.name);
   $(".firearmCaliber").text(this.caliber);
   $(".firearmSerial").text(this.serial);
   $(".firearmPrice").text(this.price);
   $(".firearmPurchase").text(this.purchaseDate);
+  $("#edit-button").attr("href", `firearms/${this.id}/edit`)
 }
 
+// Closes the firearmDrawer element and clears the accessory form if it was used
+/**
+ * closeFirearmDrawer() closes the firearmDrawer
+ * also clears the accessory form
+ * 
+ * invoked by event listener attached to X button in firearmDrawer
+ */
+function closeFirearmDrawer() {
+  $("#firearmDrawer").css('width', '0px');
+  $("#new-accessory-form").empty();
+}
+
+// Same as above, but closes accessoryDrawer
+function closeAccessoryDrawer() {
+  $("#accessoryDrawer").css('width', '0px');
+}
+
+/**
+ * insertFirearm() makes an AJAX request to /firearms/:id.json
+ * it uses the JSON response to instansiate a Firearm
+ * and populate firearmDrawer
+ * 
+ * @param {number} id -
+ * The ID of the firearm clicked on
+ * 
+ * Invoked by event listener attached to firearmList
+ * Invoked on line 148, 163, 171
+ */
 function insertFirearm(id) {
   $.get("/firearms/" + id + ".json", function (data) {
     var firearm = new Firearm(data);
-    //this will insert the data response into the firearmDrawer element of firearms/index.html
+    // This will insert the data response into the firearmDrawer element of firearms/index.html
     firearm.insertIntoDrawer();
     let accessories = data["accessories"];
     insertAccessories(accessories);
   });
 }
 
+/**
+ * insertAccessories() populates the accessoryList in
+ * firearmDrawer
+ * 
+ * @param {object} accessories - 
+ * An array of accessory objects
+ * 
+ * Invoked by insertFirearm(), line 54
+ */
 function insertAccessories(accessories) {
   let $list = $("#accessoryList");
   $($list).empty();
   accessories.forEach(function (accessory) {
-    //create an <li> for each accessory
+    // Create an <li> for each accessory
     let li = document.createElement("li");
     let a = document.createElement("a");
-    //set the required attributes for the accessory's <a> tag
+    // Set the required attributes for the accessory's <a> tag
     a.setAttribute('href', "javascript:void(0)");
     a.setAttribute("data-id", accessory.id);
     a.setAttribute("class", "js-accessory")
@@ -60,26 +95,35 @@ function insertAccessories(accessories) {
   });
 }
 
+/**
+ * Contains the IDs of a user's firearms
+ * used by js-next and js-prev to scroll through
+ * only the current user's firearms.
+ */
 const firearmIds = [];
 
-//populateFirearmsIndex generates links for each firearm and sorts them into appropriate containers
-//called on firearms.js line 64
+/**
+ * populateFirearmsIndex() generates links for each firearm
+ * and sorts them into firearmList sections
+ * 
+ * invoked on line 143
+ */
 function populateFirearmsIndex() {
-  //We need to grab all the user's firearms
+  // We need to grab all the user's firearms
   $.get("/firearms.json", function(firearmData) {
-    //Iterate over the JSON response, which is an array of firearms
+    // Iterate over the JSON response, which is an array of firearms
     firearmData.forEach(function(firearm) {
-      //Push the ID of each firearm into the firearmIds const
+      // Push the ID of each firearm into the firearmIds const
       firearmIds.push(firearm.id);
-      //lines 39-41 create new objects and containers for each firearm
+      // Create new objects and containers for each firearm
       let f = new Firearm(firearm);
       let li = document.createElement("li");
       let a = document.createElement("a");
-      //set the required attributes for the firearm's <a> tag
+      // Set the required attributes for the firearm's <a> tag
       a.setAttribute('href', "javascript:void(0)");
       a.setAttribute("data-id", f.id);
       a.innerHTML = f.name;
-      //SORT!
+      // SORT!
       if (f.category === "Rifle") {
         var $list = $("#rifle-list")
       } else if (f.category === "Pistol") {
@@ -87,13 +131,14 @@ function populateFirearmsIndex() {
       } else if (f.category === "Shotgun") {
         var $list = $("#shotgun-list")
       };
-      //Add the <li> to the proper list, then add in the formatted <a>
+      // Add the <li> to the proper list, then add in the formatted <a>
       $list.append(li);
       li.appendChild(a);
     });
   });
 };
 
+// DOM Manipulation Methods
 $(function() {
   populateFirearmsIndex();
 
@@ -106,7 +151,7 @@ $(function() {
   });
 
   $('#firearmList').find('.accordion').click(function() {
-    //expand or collapse this panel
+    // Expand or collapse this panel
     $(this).next().slideToggle('fast');
   });
 
