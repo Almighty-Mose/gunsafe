@@ -110,6 +110,8 @@ const firearmIds = [];
  * invoked on line 143
  */
 function populateFirearmsIndex() {
+  // First clear the list
+  resetFirearmList();
   // We need to grab all the user's firearms
   $.get("/firearms.json", function(firearmData) {
     // Iterate over the JSON response, which is an array of firearms
@@ -121,7 +123,7 @@ function populateFirearmsIndex() {
       let li = document.createElement("li");
       let a = document.createElement("a");
       // Set the required attributes for the firearm's <a> tag
-      a.setAttribute('href', "javascript:void(0)");
+      a.setAttribute('href', "#");
       a.setAttribute("data-id", f.id);
       a.innerHTML = f.name;
       // SORT!
@@ -138,6 +140,18 @@ function populateFirearmsIndex() {
     });
   });
 };
+
+/**
+ * resetFirearmList() empties the firearmList
+ * and firearmIds constant to give
+ * populateFirearmsIndex() a blank slate
+ */
+function resetFirearmList() {
+  $("#rifle-list").empty();
+  $("#pistol-list").empty();
+  $("#shotgun-list").empty();
+  firearmIds.length = 0;
+}
 
 // DOM Manipulation Methods
 $(function() {
@@ -176,17 +190,21 @@ $(function() {
     e.preventDefault();
     let id = this.getAttribute("data-id");
     let url = `/firearms/${id}`
-    debugger
-    $.ajax({
-      url: url,
-      type: 'DELETE',
-      success: function(result) {
-        console.log(result);
-        alert("Firearm successfully deleted!")
-        closeFirearmDrawer();
-        populateFirearmsIndex();
-      }
-    })
-  })
+    let confirmation = confirm("Are you sure?");
+    if (confirmation) {
+      $.ajax({
+        url: url,
+        type: 'DELETE',
+        success: function(result) {
+          console.log(result);
+          alert("Firearm successfully deleted!")
+          closeFirearmDrawer();
+          populateFirearmsIndex();
+        }
+      });
+    };
+  });
 });
+
+
 

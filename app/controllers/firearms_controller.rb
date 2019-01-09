@@ -50,10 +50,9 @@ class FirearmsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     @firearm.destroy
 
-    # redirect_to firearms_path
+    render json: {head: "OK"}
   end
 
   private
