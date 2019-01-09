@@ -65,6 +65,13 @@
   font-size: 20px;
 }
 
+.drawer button.white-outline {
+  padding: 1.1rem 3.5rem;
+  background: 0 0;
+  color: rgb(255, 255, 255);
+  border: 1.5px solid rgb(255, 255, 255);
+}
+
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .drawer {padding-top: 15px;}

@@ -25,7 +25,7 @@
 <div id="firearmDrawer" class="drawer">
   <button class="js-prev">Previous</button>
   <button class="js-next" data-id="">Next</button>
-  <a href="javascript:void(0)" class="closebtn" onclick="closeFirearmDrawer()">&times;</a>
+  <a href="#" class="closebtn" onclick="closeFirearmDrawer()">&times;</a>
   <h2 class="firearmName"></h2>
 
   <hr>
@@ -36,9 +36,8 @@
   <p>Purchase Date: <span class="firearmPurchase"></span></p>
 
   <div id="actionButtons">
-    <button>
-      <a href="#" id="edit-button">Edit Firearm</a>
-    </button>
+    <a href="#" id="edit-button">Edit Firearm</a>
+    <button class="white-outline" id="delete-button" data-id="">Delete</button>
   </div>
   
   <div id="accessory-container">
@@ -53,7 +52,7 @@
 </div>
 
 <div id="accessoryDrawer" class="drawer">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeAccessoryDrawer()">&times;</a>
+  <a href="#" class="closebtn" onclick="closeAccessoryDrawer()">&times;</a>
   <h2 class="accessoryName"></h2>
 
   <hr>

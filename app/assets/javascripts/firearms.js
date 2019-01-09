@@ -29,6 +29,7 @@ Firearm.prototype.insertIntoDrawer = function() {
   $(".firearmPrice").text(this.price);
   $(".firearmPurchase").text(this.purchaseDate);
   $("#edit-button").attr("href", `firearms/${this.id}/edit`)
+  $("#delete-button").attr("data-id", this.id)
 }
 
 // Closes the firearmDrawer element and clears the accessory form if it was used
@@ -169,6 +170,23 @@ $(function() {
     let arrayIndex = firearmIds.indexOf(firearmId);
     let prevId = firearmIds[arrayIndex - 1];
     insertFirearm(prevId)
+  })
+
+  $("#delete-button").click(function(e) {
+    e.preventDefault();
+    let id = this.getAttribute("data-id");
+    let url = `/firearms/${id}`
+    debugger
+    $.ajax({
+      url: url,
+      type: 'DELETE',
+      success: function(result) {
+        console.log(result);
+        alert("Firearm successfully deleted!")
+        closeFirearmDrawer();
+        populateFirearmsIndex();
+      }
+    })
   })
 });
 
