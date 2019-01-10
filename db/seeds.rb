@@ -7,20 +7,49 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'fifty_fake_firearms.csv'))
-csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-csv.each do |row|
-  t = Firearm.new
-  t.make = row['make']
-  t.model = row['model']
-  t.serial_number = row['serial_number']
-  t.caliber = row['caliber']
-  t.purchase_date = row['purchase_date']
-  t.price = row['price']
-  t.category = row['category']
-  t.user_id = row['user_id']
-  t.save
-  puts "#{t.make} #{t.model} saved"
+puts "Seeding Firearms....."
+firearm_text = File.read(Rails.root.join('lib', 'seeds', 'fifty_fake_firearms.csv'))
+firearm_csv = CSV.parse(firearm_text, :headers => true, :encoding => 'ISO-8859-1')
+firearm_csv.each do |row|
+  f = Firearm.new
+  f.make = row['make']
+  f.model = row['model']
+  f.serial_number = row['serial_number']
+  f.caliber = row['caliber']
+  f.purchase_date = row['purchase_date']
+  f.price = row['price']
+  f.category = row['category']
+  f.user_id = row['user_id']
+  f.save
+  puts "#{f.make} #{f.model} saved"
+end
+
+puts "Seeding accessories....."
+accessory_text = File.read(Rails.root.join('lib', 'seeds', 'fifty_fake_accessories.csv'))
+accessory_csv = CSV.parse(accessory_text, :headers => true, :encoding => 'ISO-8859-1')
+accessory_csv.each do |row|
+  a = Accessory.new
+  a.name = row['name']
+  a.purchase_date = row['purchase_date']
+  a.price = row['price']
+  a.category = row['category']
+  a.save
+  puts "#{a.name} saved"
 end
 
 puts "There are now #{Firearm.count} rows in the firearms table"
+puts "There are now #{Accessory.count} rows in the accessories table"
+
+puts "Attaching accessories to firearms......"
+
+association_text = File.read(Rails.root.join('lib', 'seeds', 'fifty_fake_accessory_firearm_associations.csv'))
+association_csv = CSV.parse(association_text, :headers => true, :encoding => 'ISO-8859-1') 
+association_csv.each do |row|
+  puts "Association: #{row['accessory_id']} to #{row['firearm_id']}"
+  firearm = Firearm.find(row['firearm_id'])
+  accessory = Accessory.find(row['accessory_id'])
+  firearm.accessories << accessory
+  puts "Attaching #{accessory.name} to #{firearm.name}"
+end
+
+puts "Finished!"
