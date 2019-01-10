@@ -154,6 +154,8 @@ function resetFirearmList() {
   $("#rifle-list").empty();
   $("#pistol-list").empty();
   $("#shotgun-list").empty();
+  $("#nfa-list").empty();
+  $("#other-list").empty();
   firearmIds.length = 0;
 }
 
