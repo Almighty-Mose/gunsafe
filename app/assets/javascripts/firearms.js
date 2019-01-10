@@ -133,7 +133,11 @@ function populateFirearmsIndex() {
         var $list = $("#pistol-list")
       } else if (f.category === "Shotgun") {
         var $list = $("#shotgun-list")
-      };
+      } else if (f.category === "NFA") {
+        var $list = $("#nfa-list")
+      } else if (f.category === "Other") {
+        var $list = $("#other-list")
+      }; 
       // Add the <li> to the proper list, then add in the formatted <a>
       $list.append(li);
       li.appendChild(a);
