@@ -192,7 +192,6 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
     Contains links to profile and logout
   # Firearms auto-added into categories which display on index page
     + Categories like Rifle, Pistol, Shotgun
-    Arrow on left pointing to category which turns down upon click
   # Clicking a category exposes a dropdown or drawer which contains all firearms of that category
     + Basically just exposes the list of firearms of that type
     + Animated drawer slides open
@@ -210,3 +209,7 @@ USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
     I want the user to be able to edit information, click the submit button, and without a refresh, the new information is shown without leaving firearmDrawer
 
 # BUY/SELL?
+
+Add button to index page, sort
+Sort firearms alphabetically by name
+no Ruby, only JS
