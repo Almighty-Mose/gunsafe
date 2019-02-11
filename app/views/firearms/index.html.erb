@@ -1,37 +1,74 @@
 <h1><%= link_to "#{@current_user.username}", user_path(@current_user) %>'s Firearms</h1>
 <hr>
-<h4>Current Worth: $<%= @current_user.firearms_value %></h4>
+<h4>Current Value: $<%= @current_user.firearms_value %></h4>
 
 <%= button_to 'Add A Firearm!', new_firearm_path, method: :get, class: "outline" %>
+
+<button id="sort-button">Sort!</button>
 
 <div id="firearmList">
   <button class="accordion">Rifles</button>
   <div class="panel">
-    <ul>
-      <% @rifles.each do |rifle| %>
-        <li><a href="javascript:void(0)" data-id="<%= rifle.id %>" class="openSideNav"><%= rifle.name %></a></li>
-      <% end %>
+    <ul id="rifle-list">
     </ul>
   </div>
   <button class="accordion">Pistols</button>
   <div class="panel">
-    <ul>
-      <% @pistols.each do |pistol| %>
-        <li><a href="javascript:void(0)" data-id="<%= pistol.id %>" class="openSideNav"><%= pistol.name %></a></li>
-      <% end %>
+    <ul id="pistol-list">
     </ul>
   </div>
   <button class="accordion">Shotguns</button>
   <div class="panel">
-    <ul>
-      <% @shotguns.each do |shotgun| %>
-        <li><a href="javascript:void(0)" data-id="<%= shotgun.id %>" class="openSideNav"><%= shotgun.name %></a></li>
-      <% end %>
+    <ul id="shotgun-list">
+    </ul>
+  </div>
+  <button class="accordion">NFA Firearms</button>
+  <div class="panel">
+    <ul id="nfa-list">
+    </ul>
+  </div>
+  <button class="accordion">Other Firearms</button>
+  <div class="panel">
+    <ul id="other-list">
     </ul>
   </div>
 </div>
 
-<div id="sideNav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <p>HERE'S YOUR SHIT</p>
+<div id="firearmDrawer" class="drawer">
+  <button class="js-prev">Previous</button>
+  <button class="js-next" data-id="">Next</button>
+  <a href="#" class="closebtn" onclick="closeFirearmDrawer()">&times;</a>
+  <h2 class="firearmName"></h2>
+
+  <hr>
+
+  <p>Caliber: <span class="firearmCaliber"></span></p>
+  <p>Serial Number: <span class="firearmSerial"></span></p>
+  <p>Purchase Price: $<span class="firearmPrice"></span></p>
+  <p>Purchase Date: <span class="firearmPurchase"></span></p>
+
+  <div id="actionButtons">
+    <a href="#" id="edit-button">Edit Firearm</a>
+    <button class="white-outline" id="delete-button" data-id="">Delete</button>
+  </div>
+  
+  <div id="accessory-container">
+    <h4>Accessories</h4>
+    <button id="js-accessory-add">Add an Accessory</button>
+    <div id="new-accessory-form">
+      <!-- Handlebars form template accessories/new renders here --> 
+    </div>
+    <ul id="accessoryList">
+    </ul>
+  </div>
+</div>
+
+<div id="accessoryDrawer" class="drawer">
+  <a href="#" class="closebtn" onclick="closeAccessoryDrawer()">&times;</a>
+  <h2 class="accessoryName"></h2>
+
+  <hr>
+
+  <p>Purchase Price: $<span class="accessoryPrice"></span></p>
+  <p>Purchase Date: <span class="accessoryPurchase"></span></p>
 </div>

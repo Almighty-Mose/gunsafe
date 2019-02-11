@@ -4,18 +4,15 @@ class FirearmsController < ApplicationController
 
   def index
     if @current_user.firearms.count == 0
-      redirect_to new_firearm_path
+      redirect_to new_firearm_path and return
     end
-    
-    # if !params[:category].blank?
-    #   @firearms = @current_user.firearms.category(params[:category])
-    # else
-    #   @firearms = @current_user.firearms
-    # end
 
-    @rifles = @current_user.firearms.category("Rifle")
-    @pistols = @current_user.firearms.category("Pistol")
-    @shotguns = @current_user.firearms.category("Shotgun")
+    @firearms = @current_user.firearms
+
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @firearms}
+    end
   end
 
   def new
@@ -33,17 +30,20 @@ class FirearmsController < ApplicationController
   end
 
   def show
-
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @firearm}
+    end
   end
 
   def edit
-
+    
   end
 
   def update
     @firearm.update(firearm_params)
     if @firearm.save
-      redirect_to @firearm
+      redirect_to firearms_path
     else
       render :edit
     end
@@ -52,12 +52,7 @@ class FirearmsController < ApplicationController
   def destroy
     @firearm.destroy
 
-    redirect_to firearms_path
-  end
-
-  def info
-    firearm = Firearm.find(params[:id])
-    render json: firearm.to_json
+    render json: {head: "OK"}
   end
 
   private

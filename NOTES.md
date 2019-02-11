@@ -153,53 +153,63 @@ I would like Category to be a checkbox select
 USE BALSAMIQ TO WIREFRAME YOUR CONCEPT
 
 # MUST RENDER AN INDEX PAGE (LIST OF THINGS)
-  Firearms Index will render the list of a user's firearms
-  Fetch firearms with AJAX
-  Render the firearms as JSON in controller
-  Append those firearms to page
+  + Firearms Index will render the list of a user's firearms
+  
+  We need to hijack the GET request in order to use JS, but we also need
+  the index page to be rendered first.
+
+  + Refactor using AJAX
+  + Fetch firearms with AJAX
+  + Render the firearms as JSON in controller
+  + Append those firearms to page
+  + AMS Serialization
 
 # MUST RENDER A SHOW PAGE (ONE SPECIFIC THING)
-  Using firearm's sidebar (see DESIGN below)
-  Sidebar also contains NEXT and PREVIOUS, which will fetch another firearm resource by AJAX and render through JS.
+  + Using firearm's sidebar (see DESIGN below)
+  + Sidebar also contains NEXT and PREVIOUS, which will fetch another firearm resource by AJAX and render through JS.
+    + Next button needs to grab USER'S next firearm
+      Would also like it to disappear once end of list is reached
+    + Previous button does same
+  + AMS Serialization
 
 # MUST DYNAMICALLY RENDER A HAS-MANY RELATIONSHIP ON PAGE
-  Rendering accessories on firearms show page
+  + Rendering accessories on firearms show page
+  + Accessory entries are links that pull open a separate drawer containing information
 
 # MUST USE JS TO RENDER A FORM TO CREATE RESOURCE DYNAMICALLY
-  Use the firearm's new form
-    Will dynamically append to the index page
-  Use accessory's new form
-    Will dynamically append to a firearm show sidebar
+  + Use accessory's new form
+    + Will dynamically append to a firearm show sidebar
+    + Creation of accessory clears form from firearm drawer after creation
+    + Form is contained in a JS method that reveals on click of "Add an accessory"
 
 # MUST USE JS MODEL OBJECTS
-  Need to have one prototype method
-    Firearm's make + model
+  + Need to have one prototype method
+  + Firearm's make + model
 
 
 # DESIGN
   # Top of page navbar
     Contains links to profile and logout
   # Firearms auto-added into categories which display on index page
-    Categories like Rifle, Pistol, Shotgun
-    Arrow on left pointing to category which turns down upon click
+    + Categories like Rifle, Pistol, Shotgun
   # Clicking a category exposes a dropdown or drawer which contains all firearms of that category
-    Basically just exposes the list of firearms of that type
-    Animated drawer slides open
+    + Basically just exposes the list of firearms of that type
+    + Animated drawer slides open
   # Sidebar drawer for firearms
-    When you click a firearm, a sidebar (with opacity?) slides over and contains detailed firearm information
+    + When you click a firearm, a sidebar (with opacity?) slides over and   contains detailed firearm information
     Firearms can have an image of that firearm displayed in sidebar
   # Accessory info/add in firearm sidebar
-    Accessories are included
-    Move the form for adding an accessory into the sidebar
+    + Accessories are included
+    + Move the form for adding an accessory into the sidebar
 
+# TO DO
+  # Make firearms editable in place in firearmDrawer
+    I want the user to click the "Edit Firearm" button, which transforms the firearm's information to form fields.
+    I want the "Edit Firearm" button to change to the "Submit" or "Update" button
+    I want the user to be able to edit information, click the submit button, and without a refresh, the new information is shown without leaving firearmDrawer
 
 # BUY/SELL?
 
-
-
-
-
-
-
-
-
+Add button to index page, sort
+Sort firearms alphabetically by name
+no Ruby, only JS

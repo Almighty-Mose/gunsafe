@@ -15,6 +15,8 @@
   <% end %>
 </ul>
 
+<!-- everything above this line is now contained in firearmDrawer. -->
+
 <%= button_to 'Add an Accessory', new_firearm_accessory_path(@firearm), method: :get %>
 <%= button_to 'Edit Firearm', edit_firearm_path(@firearm), method: :get %>
 <%= button_to 'Delete Firearm', firearm_path(@firearm), method: :delete, data: { confirm: 'Are you sure?'} %>
