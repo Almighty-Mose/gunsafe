@@ -105,6 +105,11 @@ const firearmIds = [];
  * invoked on line 164
  */
 function populateFirearmsIndex(firearmData) {
+  let rifleCount = 0;
+  let pistolCount = 0;
+  let shotgunCount = 0;
+  let nfaCount = 0;
+  let otherCount = 0;
   // First clear the list
   resetFirearmList();
   // We need to grab all the user's firearms
@@ -122,19 +127,25 @@ function populateFirearmsIndex(firearmData) {
     a.innerHTML = f.name;
     // SORT!
     if (f.category === "Rifle") {
+      rifleCount += 1
       var $list = $("#rifle-list")
     } else if (f.category === "Pistol") {
+      pistolCount += 1
       var $list = $("#pistol-list")
     } else if (f.category === "Shotgun") {
+      shotgunCount += 1
       var $list = $("#shotgun-list")
     } else if (f.category === "NFA") {
+      nfaCount += 1
       var $list = $("#nfa-list")
     } else if (f.category === "Other") {
+      otherCount += 1
       var $list = $("#other-list")
     };
     // Add the <li> to the proper list, then add in the formatted <a>
     $list.append(li);
     li.appendChild(a);
+    console.log(rifleCount, pistolCount, shotgunCount, nfaCount, otherCount)
   });
 };
 
