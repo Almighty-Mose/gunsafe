@@ -5,6 +5,7 @@ $(function() {
       $(".accessoryName").text(data.name)
       $(".accessoryPrice").text(data.price)
       $(".accessoryPurchase").text(data.purchase_date)
+      $("#accessoryEdit").attr("href", `accessories/${id}/edit`)
     });
     $("#accessoryDrawer").css('width', '500px');
   });

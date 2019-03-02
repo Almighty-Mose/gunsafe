@@ -14,22 +14,17 @@ class Firearm {
     this.id = data["id"];
     this.category = data["category"]
   }
-}
 
-/**
- * insertIntoDrawer() populates the firearmDrawer elements
- * 
- * invoked on line 66
- */
-Firearm.prototype.insertIntoDrawer = function() {
-  $(".js-next").attr("data-id", this.id);
-  $(".firearmName").text(this.name);
-  $(".firearmCaliber").text(this.caliber);
-  $(".firearmSerial").text(this.serial);
-  $(".firearmPrice").text(this.price);
-  $(".firearmPurchase").text(this.purchaseDate);
-  $("#edit-button").attr("href", `firearms/${this.id}/edit`)
-  $("#delete-button").attr("data-id", this.id)
+  insertIntoDrawer() {
+    $(".js-next").attr("data-id", this.id);
+    $(".firearmName").text(this.name);
+    $(".firearmCaliber").text(this.caliber);
+    $(".firearmSerial").text(this.serial);
+    $(".firearmPrice").text(this.price);
+    $(".firearmPurchase").text(this.purchaseDate);
+    $("#edit-button").attr("href", `firearms/${this.id}/edit`)
+    $("#delete-button").attr("data-id", this.id)
+  }
 }
 
 /**
@@ -155,32 +150,33 @@ function resetFirearmList() {
   $("#nfa-list").empty();
   $("#other-list").empty();
   firearmIds.length = 0;
-}
+};
 
 function sorting(a, b) {
   let nameA = a.make.toUpperCase(); // ignore upper and lowercase
   let nameB = b.make.toUpperCase(); // ignore upper and lowercase
   if (nameA < nameB) {
     return -1;
-  }
+  };
   if (nameA > nameB) {
     return 1;
-  }
+  };
 
   // names must be equal
   return 0;
-}
+};
 
 function sortFirearms() {
-  $.get("/firearms", function(allFirearms) {
+  $.get("/firearms.json", function(allFirearms) {
     allFirearms.sort(sorting);
     console.log(allFirearms);
     populateFirearmsIndex(allFirearms);
-  }, "json")
-}
+  });
+};
 
 // DOM Manipulation Methods
 $(function() {
+
   $.get("/firearms.json", populateFirearmsIndex)
   
   $("#firearmList").on("click", "a", function(e) {
