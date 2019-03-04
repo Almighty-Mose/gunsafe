@@ -156,19 +156,13 @@ function populateFirearmsIndex(firearmData) {
   insertCounts(counts)
 };
 
-// TODO: Abstract this fo sho.
+// TODO: This function fires every time populateFirearmsIndex fires
 insertCounts = counts => {
-  const rifle = document.getElementById("rifle-title")
-  const pistol = document.getElementById("pistol-title")
-  const shotgun = document.getElementById("shotgun-title")
-  const nfa = document.getElementById("nfa-title")
-  const other = document.getElementById("other-title")
-  console.log(rifle)
-  rifle.innerHTML = `Rifles (${counts.rifle})`
-  pistol.innerHTML = `Pistols (${counts.pistol})`
-  shotgun.innerHTML = `Shotguns (${counts.shotgun})`
-  nfa.innerHTML = `NFA (${counts.nfa})`
-  other.innerHTML = `Other (${counts.other})`
+  const entries = Object.entries(counts)
+  for (const [firearm, count] of entries) {
+    button = document.getElementById(`${firearm}-title`)
+    button.innerHTML += ` (${count})`
+  }
 }
 
 /**
