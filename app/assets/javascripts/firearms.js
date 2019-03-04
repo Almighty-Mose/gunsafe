@@ -104,12 +104,16 @@ const firearmIds = [];
  * 
  * invoked on line 164
  */
+
+ //TODO: Refactor this whole thing. It's waaaaay too bloated.
 function populateFirearmsIndex(firearmData) {
-  let rifleCount = 0;
-  let pistolCount = 0;
-  let shotgunCount = 0;
-  let nfaCount = 0;
-  let otherCount = 0;
+  const counts = { 
+    rifle: 0,
+    pistol: 0,
+    shotgun: 0,
+    nfa: 0,
+    other: 0
+  }
   // First clear the list
   resetFirearmList();
   // We need to grab all the user's firearms
@@ -126,28 +130,46 @@ function populateFirearmsIndex(firearmData) {
     a.setAttribute("data-id", f.id);
     a.innerHTML = f.name;
     // SORT!
+    // * I really feel like this should be it's own function
+    let $list
     if (f.category === "Rifle") {
-      rifleCount += 1
-      var $list = $("#rifle-list")
+      counts['rifle'] += 1
+      $list = $("#rifle-list")
     } else if (f.category === "Pistol") {
-      pistolCount += 1
-      var $list = $("#pistol-list")
+      counts['pistol'] += 1
+      $list = $("#pistol-list")
     } else if (f.category === "Shotgun") {
-      shotgunCount += 1
-      var $list = $("#shotgun-list")
+      counts['shotgun'] += 1
+      $list = $("#shotgun-list")
     } else if (f.category === "NFA") {
-      nfaCount += 1
-      var $list = $("#nfa-list")
+      counts['nfa'] += 1
+      $list = $("#nfa-list")
     } else if (f.category === "Other") {
-      otherCount += 1
-      var $list = $("#other-list")
+      counts['other'] += 1
+      $list = $("#other-list")
     };
     // Add the <li> to the proper list, then add in the formatted <a>
     $list.append(li);
     li.appendChild(a);
-    console.log(rifleCount, pistolCount, shotgunCount, nfaCount, otherCount)
   });
+  console.log(counts)
+  insertCounts(counts)
 };
+
+// TODO: Abstract this fo sho.
+insertCounts = counts => {
+  const rifle = document.getElementById("rifle-title")
+  const pistol = document.getElementById("pistol-title")
+  const shotgun = document.getElementById("shotgun-title")
+  const nfa = document.getElementById("nfa-title")
+  const other = document.getElementById("other-title")
+  console.log(rifle)
+  rifle.innerHTML = `Rifles (${counts.rifle})`
+  pistol.innerHTML = `Pistols (${counts.pistol})`
+  shotgun.innerHTML = `Shotguns (${counts.shotgun})`
+  nfa.innerHTML = `NFA (${counts.nfa})`
+  other.innerHTML = `Other (${counts.other})`
+}
 
 /**
  * resetFirearmList() empties the firearmList
