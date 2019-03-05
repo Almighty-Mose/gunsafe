@@ -156,12 +156,20 @@ function populateFirearmsIndex(firearmData) {
   insertCounts(counts)
 };
 
-// TODO: This function fires every time populateFirearmsIndex fires
+/**
+ * insertCounts adds the count of each firearm type to the
+ * appropriate button element
+ * 
+ * @param {object} counts -
+ * FirearmCategory: Count
+ */
 insertCounts = counts => {
   const entries = Object.entries(counts)
   for (const [firearm, count] of entries) {
     button = document.getElementById(`${firearm}-title`)
-    button.innerHTML += ` (${count})`
+    if (!button.innerHTML.includes(count)) {
+      button.innerHTML += ` (${count})`
+    }
   }
 }
 
