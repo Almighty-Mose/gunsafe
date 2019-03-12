@@ -130,7 +130,8 @@ function populateFirearmsIndex(firearmData) {
     a.setAttribute("data-id", f.id);
     a.innerHTML = f.name;
     // SORT!
-    // * I really feel like this should be it's own function
+    // * I really feel like this should be its own function
+    // TODO: There's gotta be a better way to do this sorting.
     let $list
     if (f.category === "Rifle") {
       counts['rifle'] += 1
