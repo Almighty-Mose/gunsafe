@@ -104,7 +104,16 @@ const firearmIds = [];
  * 
  * invoked on line 164
  */
+
+ //TODO: Refactor this whole thing. It's waaaaay too bloated.
 function populateFirearmsIndex(firearmData) {
+  const counts = { 
+    rifle: 0,
+    pistol: 0,
+    shotgun: 0,
+    nfa: 0,
+    other: 0
+  }
   // First clear the list
   resetFirearmList();
   // We need to grab all the user's firearms
@@ -121,22 +130,49 @@ function populateFirearmsIndex(firearmData) {
     a.setAttribute("data-id", f.id);
     a.innerHTML = f.name;
     // SORT!
+    // * I really feel like this should be its own function
+    // TODO: There's gotta be a better way to do this sorting.
+    let $list
     if (f.category === "Rifle") {
-      var $list = $("#rifle-list")
+      counts['rifle'] += 1
+      $list = $("#rifle-list")
     } else if (f.category === "Pistol") {
-      var $list = $("#pistol-list")
+      counts['pistol'] += 1
+      $list = $("#pistol-list")
     } else if (f.category === "Shotgun") {
-      var $list = $("#shotgun-list")
+      counts['shotgun'] += 1
+      $list = $("#shotgun-list")
     } else if (f.category === "NFA") {
-      var $list = $("#nfa-list")
+      counts['nfa'] += 1
+      $list = $("#nfa-list")
     } else if (f.category === "Other") {
-      var $list = $("#other-list")
+      counts['other'] += 1
+      $list = $("#other-list")
     };
     // Add the <li> to the proper list, then add in the formatted <a>
     $list.append(li);
     li.appendChild(a);
   });
+  console.log(counts)
+  insertCounts(counts)
 };
+
+/**
+ * insertCounts adds the count of each firearm type to the
+ * appropriate button element
+ * 
+ * @param {object} counts -
+ * FirearmCategory: Count
+ */
+insertCounts = counts => {
+  const entries = Object.entries(counts)
+  for (const [firearm, count] of entries) {
+    button = document.getElementById(`${firearm}-title`)
+    if (!button.innerHTML.includes(count)) {
+      button.innerHTML += ` (${count})`
+    }
+  }
+}
 
 /**
  * resetFirearmList() empties the firearmList
