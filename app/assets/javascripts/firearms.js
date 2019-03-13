@@ -205,7 +205,6 @@ function sorting(a, b) {
 function sortFirearms() {
   $.get("/firearms.json", function(allFirearms) {
     allFirearms.sort(sorting);
-    console.log(allFirearms);
     populateFirearmsIndex(allFirearms);
   });
 };
