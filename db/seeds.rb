@@ -2,6 +2,10 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 require 'csv'
 
+puts "Creating an initial user....."
+User.create(username: "Lord Ruler", email: "rulesall@ironfist.com", password: "ruleitall")
+puts "Initial user created!"
+
 puts "Seeding Firearms....."
 CSV.read(Rails.root.join('lib', 'seeds', 'fifty_fake_firearms.csv'), headers: true).each do |row|
   f = Firearm.create(row.to_hash)
