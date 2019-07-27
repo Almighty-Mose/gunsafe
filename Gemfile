@@ -33,6 +33,8 @@ gem 'omniauth'
 
 gem 'omniauth-google-oauth2', '~> 0.2.1'
 
+gem 'omniauth-rails_csrf_protection'
+
 gem 'sysrandom'
 
 gem 'jquery-rails'
@@ -44,6 +46,7 @@ gem 'handlebars_assets'
 gem 'dotenv-rails'
 
 gem 'rake', '12.3.2'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
