@@ -45,7 +45,7 @@ gem 'handlebars_assets'
 
 gem 'dotenv-rails'
 
-gem 'rake', '12.3.2'
+gem 'rake', '12.3.3'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
